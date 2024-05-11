@@ -7,11 +7,14 @@ package admin;
 
 import config.Session;
 import config.dbConnector;
+import internalPages.adminPage;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Container;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.BorderFactory;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -95,6 +98,8 @@ public class userForm extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         usertable = new javax.swing.JTable();
+        add = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         update = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         delete = new javax.swing.JPanel();
@@ -102,6 +107,23 @@ public class userForm extends javax.swing.JInternalFrame {
 
         setMinimumSize(new java.awt.Dimension(610, 420));
         setPreferredSize(new java.awt.Dimension(610, 420));
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameActivated(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setMinimumSize(new java.awt.Dimension(610, 420));
@@ -130,7 +152,31 @@ public class userForm extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 590, 270));
 
+        add.setBackground(new java.awt.Color(0, 51, 51));
+        add.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                addMouseExited(evt);
+            }
+        });
+        add.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("ADD");
+        add.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 80, 20));
+
+        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 80, 40));
+
         update.setBackground(new java.awt.Color(0, 51, 51));
+        update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 updateMouseClicked(evt);
@@ -150,9 +196,10 @@ public class userForm extends javax.swing.JInternalFrame {
         jLabel7.setText("EDIT");
         update.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 80, 20));
 
-        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 80, 40));
+        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 80, 40));
 
         delete.setBackground(new java.awt.Color(0, 51, 51));
+        delete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deleteMouseClicked(evt);
@@ -172,7 +219,7 @@ public class userForm extends javax.swing.JInternalFrame {
         jLabel9.setText("DELETE");
         delete.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 80, 20));
 
-        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 360, 80, 40));
+        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 80, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -229,41 +276,103 @@ public class userForm extends javax.swing.JInternalFrame {
         if(rowindex < 0){
             JOptionPane.showMessageDialog(null,"Please Select an Item!");
         }else{
-            TableModel model = usertable.getModel();
-            updatePage up = new updatePage();
-            up.idnumber.setText(""+model.getValueAt(rowindex, 0));
-            up.fname.setText(""+model.getValueAt(rowindex, 1));
-            up.lname.setText(""+model.getValueAt(rowindex, 2));
-            up.email.setText(""+model.getValueAt(rowindex, 3));
-            up.username.setText("");
-            up.password.setText("");
-            if(up.accounttype.getSelectedItem().equals("User")){
-                up.accounttype.setSelectedItem("User");
-            }else if(up.accounttype.getSelectedItem().equals("Admin")){
-                up.accounttype.setSelectedItem("Admin");
+            
+            JDesktopPane desktopPane = null;
+            Container parent = this.getParent();
+            while(parent!=null){
+                if(parent instanceof adminPage){
+                    desktopPane = ((adminPage)parent).adminDesktop;
+                    break;
+                }
+                parent = parent.getParent();
             }
-            up.accountstatus.setSelectedItem(model.getValueAt(rowindex, 4));
+            
+            if(desktopPane != null){
+                TableModel model = usertable.getModel();
+                updatePage aa = new updatePage();
+                desktopPane.removeAll();
+                desktopPane.add(aa);
+          
+                aa.idnumber.setText(""+model.getValueAt(rowindex, 0));
+                aa.fname.setText(""+model.getValueAt(rowindex, 1));
+                aa.lname.setText(""+model.getValueAt(rowindex, 2));
+                aa.email.setText(""+model.getValueAt(rowindex, 3));
+                aa.username.setText("");
+                aa.password.setText("");
+                if(aa.accounttype.getSelectedItem().equals("User")){
+                    aa.accounttype.setSelectedItem("User");
+                }else if(aa.accounttype.getSelectedItem().equals("Admin")){
+                    aa.accounttype.setSelectedItem("Admin");
+                }
+                aa.accountstatus.setSelectedItem(model.getValueAt(rowindex, 4));
 
-            up.setVisible(true);
-            up.action = "Update";
-            up.label.setText("UPDATE");
-
-            this.dispose();
+                aa.setVisible(true);
+                aa.action = "Update";
+                aa.label.setText("UPDATE");
+                }
+ 
         }
     }//GEN-LAST:event_updateMouseClicked
 
+    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
+        JDesktopPane desktopPane = null;
+        Container parent = this.getParent();
+        while(parent!=null){
+            if(parent instanceof adminPage){
+                desktopPane = ((adminPage)parent).adminDesktop;
+                break;
+            }
+            parent = parent.getParent();
+        }
+        
+        if(desktopPane != null){
+            adminApplicants aa = new adminApplicants();
+            desktopPane.removeAll();
+            desktopPane.add(aa);
+            aa.setVisible(true);
+            aa.action = "Add";
+            aa.label.setText("SAVE");
+        }
+        
+        
+    }//GEN-LAST:event_addMouseClicked
+
+    private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
+        add.setBackground(hover);
+    }//GEN-LAST:event_addMouseEntered
+
+    private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
+        add.setBackground(defbutton);
+    }//GEN-LAST:event_addMouseExited
+
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+        Session sess = Session.getInstance();
+        
+        if(sess.getUid() == 0){
+            JOptionPane.showMessageDialog(null,"Please Login First!");
+            loginForm lf = new loginForm();
+            lf.setVisible(true);
+            this.dispose();
+        }else{
+            
+            cid.setText(""+sess.getUid());
+        }
+    }//GEN-LAST:event_formInternalFrameActivated
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel add;
     public javax.swing.JLabel cid;
     private javax.swing.JPanel delete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel update;
-    private javax.swing.JTable usertable;
+    public javax.swing.JTable usertable;
     // End of variables declaration//GEN-END:variables
 }

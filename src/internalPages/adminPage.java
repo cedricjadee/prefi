@@ -78,8 +78,6 @@ public class adminPage extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        add = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
         adminDesktop = new javax.swing.JDesktopPane();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -104,6 +102,7 @@ public class adminPage extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         reports.setBackground(new java.awt.Color(51, 51, 51));
+        reports.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         reports.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 reportsMouseClicked(evt);
@@ -123,9 +122,10 @@ public class adminPage extends javax.swing.JFrame {
         jLabel7.setText("REPORTS");
         reports.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
 
-        jPanel3.add(reports, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 140, 40));
+        jPanel3.add(reports, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 140, 40));
 
         transaction.setBackground(new java.awt.Color(51, 51, 51));
+        transaction.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         transaction.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 transactionMouseClicked(evt);
@@ -145,9 +145,10 @@ public class adminPage extends javax.swing.JFrame {
         TRANSACTION.setText("TRANSACTION");
         transaction.add(TRANSACTION, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
 
-        jPanel3.add(transaction, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 140, 40));
+        jPanel3.add(transaction, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 140, 40));
 
         booking.setBackground(new java.awt.Color(51, 51, 51));
+        booking.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         booking.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bookingMouseClicked(evt);
@@ -167,9 +168,10 @@ public class adminPage extends javax.swing.JFrame {
         jLabel8.setText("BOOKINGS");
         booking.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
 
-        jPanel3.add(booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 140, 40));
+        jPanel3.add(booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 140, 40));
 
         user.setBackground(new java.awt.Color(51, 51, 51));
+        user.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         user.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 userMouseClicked(evt);
@@ -210,28 +212,6 @@ public class adminPage extends javax.swing.JFrame {
         );
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, 10));
-
-        add.setBackground(new java.awt.Color(0, 51, 51));
-        add.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                addMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                addMouseExited(evt);
-            }
-        });
-        add.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("ADD USER");
-        add.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, 20));
-
-        jPanel3.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 140, 40));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 480));
 
@@ -336,22 +316,6 @@ public class adminPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_transactionMouseExited
 
-    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-
-        adminApplicants ap = new adminApplicants();
-        adminDesktop.add(ap).setVisible(true);
-        ap.action = "Add";
-        ap.label.setText("SAVE");
-    }//GEN-LAST:event_addMouseClicked
-
-    private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
-        add.setBackground(hover);
-    }//GEN-LAST:event_addMouseEntered
-
-    private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
-        add.setBackground(defbutton);
-    }//GEN-LAST:event_addMouseExited
-
     /**
      * @param args the command line arguments
      */
@@ -389,8 +353,7 @@ public class adminPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel TRANSACTION;
-    private javax.swing.JPanel add;
-    private javax.swing.JDesktopPane adminDesktop;
+    public javax.swing.JDesktopPane adminDesktop;
     public javax.swing.JLabel admin_account;
     public javax.swing.JLabel admin_gmail;
     private javax.swing.JPanel booking;
@@ -401,7 +364,6 @@ public class adminPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

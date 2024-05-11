@@ -105,6 +105,7 @@ public class userPage extends javax.swing.JFrame {
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         reports.setBackground(new java.awt.Color(51, 51, 51));
+        reports.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         reports.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 reportsMouseClicked(evt);
@@ -127,6 +128,7 @@ public class userPage extends javax.swing.JFrame {
         jPanel4.add(reports, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 140, 40));
 
         booking.setBackground(new java.awt.Color(51, 51, 51));
+        booking.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         booking.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bookingMouseClicked(evt);
@@ -149,6 +151,7 @@ public class userPage extends javax.swing.JFrame {
         jPanel4.add(booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 140, 40));
 
         user.setBackground(new java.awt.Color(51, 51, 51));
+        user.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         user.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 userMouseClicked(evt);

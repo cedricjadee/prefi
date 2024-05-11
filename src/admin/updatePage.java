@@ -18,12 +18,12 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  *
  * @author cedricjadee
  */
-public class adminApplicants extends javax.swing.JInternalFrame {
+public class updatePage extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form adminApplicants
+     * Creates new form updatePage
      */
-    public adminApplicants() {
+    public updatePage() {
         initComponents();
         
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
@@ -68,7 +68,6 @@ public class adminApplicants extends javax.swing.JInternalFrame {
         }
     }
     
-        
         public void close(){
             
             this.dispose();
@@ -76,7 +75,6 @@ public class adminApplicants extends javax.swing.JInternalFrame {
             md.setVisible(true);
             
         }
-    
         Color hover = new Color(0,0,0);
         Color button = new Color (0,51,51);
         public String action;
@@ -103,6 +101,7 @@ public class adminApplicants extends javax.swing.JInternalFrame {
         label1 = new javax.swing.JPanel();
         label = new javax.swing.JLabel();
         accountstatus = new javax.swing.JComboBox<>();
+        idnumber = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(610, 420));
@@ -113,22 +112,22 @@ public class adminApplicants extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 400));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Admin Registration");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, 20));
+        jLabel1.setText("Admin Approval");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, 20));
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 60, 10));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 60, 10));
 
         fname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         fname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "First Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 190, 50));
+        jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 190, 50));
 
         lname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         lname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         lname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Last Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        jPanel1.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 190, 50));
+        jPanel1.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 200, 50));
 
         email.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         email.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -138,17 +137,19 @@ public class adminApplicants extends javax.swing.JInternalFrame {
                 emailActionPerformed(evt);
             }
         });
-        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 400, 50));
+        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 410, 50));
 
         username.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         username.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         username.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Username", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 400, 50));
+        username.setEnabled(false);
+        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 410, 50));
 
         password.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         password.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 400, 50));
+        password.setEnabled(false);
+        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 410, 50));
 
         accounttype.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         accounttype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User" }));
@@ -176,7 +177,7 @@ public class adminApplicants extends javax.swing.JInternalFrame {
         label.setText("LABEL");
         label1.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 100, 20));
 
-        jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 100, 40));
+        jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 100, 40));
 
         accountstatus.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         accountstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Pending" }));
@@ -186,7 +187,19 @@ public class adminApplicants extends javax.swing.JInternalFrame {
                 accountstatusActionPerformed(evt);
             }
         });
-        jPanel1.add(accountstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 190, 50));
+        jPanel1.add(accountstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 190, 50));
+
+        idnumber.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        idnumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        idnumber.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
+        idnumber.setCaretColor(new java.awt.Color(255, 255, 255));
+        idnumber.setEnabled(false);
+        idnumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idnumberActionPerformed(evt);
+            }
+        });
+        jPanel1.add(idnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 90, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -196,84 +209,59 @@ public class adminApplicants extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+    private void idnumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idnumberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_emailActionPerformed
-
-    private void label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label1MouseClicked
-
-        if(fname.getText().isEmpty() || lname.getText().isEmpty() || email.getText().isEmpty() || username.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "All fields are required!");
-        }else if(password.getText().length() < 8){
-            JOptionPane.showMessageDialog(null, "Password must be 8 characters and above!");
-            password.setText("");
-        }else if(duplicateCheck()){
-            System.out.println("Duplicate Exist");
-
-        }else{
-
-            if(action.equals("Add")){
-
-                try{
-
-                    String pass = passwordHasher.hashPassword(password.getText());
-                    dbConnector dbc = new dbConnector();
-                    boolean result = dbc.insertData("INSERT INTO tbl_user ("
-
-                        + "u_fname,"
-                        + "u_lname,"
-                        + "u_email,"
-                        + "u_username,"
-                        + "u_password,"
-                        + "u_type,"
-                        + "u_status) VALUES ("
-                        + "'"+fname.getText()+"',"
-                        + "'"+lname.getText()+"',"
-                        + "'"+email.getText()+"',"
-                        + "'"+username.getText()+"',"
-                        + "'"+pass+"',"
-                        + "'"+accounttype.getSelectedItem()+"',"
-                        + "'"+accountstatus.getSelectedItem()+"')");
-
-                    if(true){
-                        JOptionPane.showMessageDialog(null, "Successfully Save!");
-                        close();
-                    }else{
-                        System.out.println("Saving Data Failed!");
-                    }
-                }catch(NoSuchAlgorithmException ex){
-                    System.out.println(""+ex);
-                }
-
-            }
-        }
-
-    }//GEN-LAST:event_label1MouseClicked
-
-    private void label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label1MouseEntered
-        label1.setBackground(hover);
-    }//GEN-LAST:event_label1MouseEntered
-
-    private void label1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label1MouseExited
-        label1.setBackground(button);
-    }//GEN-LAST:event_label1MouseExited
+    }//GEN-LAST:event_idnumberActionPerformed
 
     private void accountstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountstatusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_accountstatusActionPerformed
 
+    private void label1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label1MouseExited
+        label1.setBackground(button);
+    }//GEN-LAST:event_label1MouseExited
+
+    private void label1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label1MouseEntered
+        label1.setBackground(hover);
+    }//GEN-LAST:event_label1MouseEntered
+
+    private void label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label1MouseClicked
+            if(action.equals("Update")){
+            
+            if(duplicateCheck()){
+                System.out.println("Duplicate Exist");
+                
+                }else{
+            
+                dbConnector dbc = new dbConnector();
+                dbc.updateData("UPDATE tbl_user SET "
+                    + " u_fname =   '"+fname.getText()+"',"
+                    + " u_lname =   '"+lname.getText()+"',"
+                    + " u_email =   '"+email.getText()+"',"
+                    + " u_status = '"+accountstatus.getSelectedItem()+"'"
+                    + "WHERE u_id = '"+idnumber.getText()+"'");
+                close();
+                }
+            }
+    }//GEN-LAST:event_label1MouseClicked
+
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<String> accountstatus;
-    private javax.swing.JComboBox<String> accounttype;
+    public javax.swing.JComboBox<String> accounttype;
     public javax.swing.JTextField email;
     public javax.swing.JTextField fname;
+    public javax.swing.JTextField idnumber;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
