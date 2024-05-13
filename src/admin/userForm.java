@@ -104,6 +104,8 @@ public class userForm extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         delete = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(610, 420));
         setPreferredSize(new java.awt.Dimension(610, 420));
@@ -173,7 +175,7 @@ public class userForm extends javax.swing.JInternalFrame {
         jLabel8.setText("ADD");
         add.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 80, 20));
 
-        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 80, 40));
+        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 80, 40));
 
         update.setBackground(new java.awt.Color(0, 51, 51));
         update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -196,7 +198,7 @@ public class userForm extends javax.swing.JInternalFrame {
         jLabel7.setText("EDIT");
         update.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 80, 20));
 
-        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 80, 40));
+        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, 80, 40));
 
         delete.setBackground(new java.awt.Color(0, 51, 51));
         delete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -219,7 +221,13 @@ public class userForm extends javax.swing.JInternalFrame {
         jLabel9.setText("DELETE");
         delete.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 80, 20));
 
-        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 80, 40));
+        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 80, 40));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/g2.jpg"))); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, 80));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/g1.jpg"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 70, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -386,7 +394,9 @@ public class userForm extends javax.swing.JInternalFrame {
     public javax.swing.JLabel cid;
     private javax.swing.JPanel delete;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

@@ -308,10 +308,8 @@ public class loginForm extends javax.swing.JFrame {
                 }else if(type.equals("User")){
                     JOptionPane.showMessageDialog(null, "Login Successfully!");
                     userPage up = new userPage();
-                    up.id.setText(""+sess.getUid());
-                    up.name.setText(""+sess.getFname());
-                    up.email.setText(""+sess.getEmail());
-                    up.username.setText(""+sess.getUsername());
+                    up.user_account.setText(""+sess.getFname());
+                    up.user_gmail.setText(""+sess.getEmail());
                     up.setVisible(true);
                     this.dispose();
                 }else{

@@ -44,6 +44,7 @@ public class Session {
         this.uid = uid;
     }
 
+
     public String getFname() {
         return fname;
     }

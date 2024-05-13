@@ -6,14 +6,19 @@
 package internalPages;
 
 import admin.adminApplicants;
+import admin.bookingForm;
 import admin.roomForm;
-import admin.reportPage;
+import admin.reportForm;
+import admin.transactionForm;
 import admin.userForm;
+import config.Session;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import myapp.loginForm;
 
 /**
  *
@@ -76,10 +81,14 @@ public class adminPage extends javax.swing.JFrame {
         TRANSACTION = new javax.swing.JLabel();
         booking = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        room = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
         user = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        logout = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         adminDesktop = new javax.swing.JDesktopPane();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -88,6 +97,11 @@ public class adminPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -124,7 +138,7 @@ public class adminPage extends javax.swing.JFrame {
         jLabel7.setText("REPORTS");
         reports.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
 
-        jPanel3.add(reports, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 140, 40));
+        jPanel3.add(reports, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 140, 40));
 
         transaction.setBackground(new java.awt.Color(51, 51, 51));
         transaction.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -147,7 +161,7 @@ public class adminPage extends javax.swing.JFrame {
         TRANSACTION.setText("TRANSACTION");
         transaction.add(TRANSACTION, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
 
-        jPanel3.add(transaction, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 140, 40));
+        jPanel3.add(transaction, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 140, 40));
 
         booking.setBackground(new java.awt.Color(51, 51, 51));
         booking.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -170,7 +184,30 @@ public class adminPage extends javax.swing.JFrame {
         jLabel8.setText("BOOKINGS");
         booking.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
 
-        jPanel3.add(booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 140, 40));
+        jPanel3.add(booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 140, 40));
+
+        room.setBackground(new java.awt.Color(51, 51, 51));
+        room.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        room.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                roomMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                roomMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                roomMouseExited(evt);
+            }
+        });
+        room.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("ROOMS");
+        room.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
+
+        jPanel3.add(room, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 140, 40));
 
         user.setBackground(new java.awt.Color(51, 51, 51));
         user.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -193,7 +230,7 @@ public class adminPage extends javax.swing.JFrame {
         jLabel6.setText("USER");
         user.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
 
-        jPanel3.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 140, 40));
+        jPanel3.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 140, 40));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -214,6 +251,29 @@ public class adminPage extends javax.swing.JFrame {
         );
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, 10));
+
+        logout.setBackground(new java.awt.Color(51, 51, 51));
+        logout.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutMouseExited(evt);
+            }
+        });
+        logout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("LOG OUT");
+        logout.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
+
+        jPanel3.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 140, 40));
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 480));
 
@@ -270,7 +330,7 @@ public class adminPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void reportsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportsMouseClicked
-        reportPage bf = new reportPage();
+        reportForm bf = new reportForm();
         adminDesktop.add(bf).setVisible(true);
     }//GEN-LAST:event_reportsMouseClicked
 
@@ -283,7 +343,7 @@ public class adminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_reportsMouseExited
 
     private void bookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingMouseClicked
-        roomForm bf = new roomForm();
+        bookingForm bf = new bookingForm();
         adminDesktop.add(bf).setVisible(true);
     }//GEN-LAST:event_bookingMouseClicked
 
@@ -309,7 +369,8 @@ public class adminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_userMouseExited
 
     private void transactionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionMouseClicked
-        
+        transactionForm tf = new transactionForm();
+        adminDesktop.add(tf).setVisible(true);
     }//GEN-LAST:event_transactionMouseClicked
 
     private void transactionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionMouseEntered
@@ -319,6 +380,44 @@ public class adminPage extends javax.swing.JFrame {
     private void transactionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionMouseExited
         transaction.setBackground(bodycolor);
     }//GEN-LAST:event_transactionMouseExited
+
+    private void roomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roomMouseClicked
+        roomForm rf = new roomForm();
+        adminDesktop.add(rf).setVisible(true);
+    }//GEN-LAST:event_roomMouseClicked
+
+    private void roomMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roomMouseEntered
+        room.setBackground(buttoncolor);
+    }//GEN-LAST:event_roomMouseEntered
+
+    private void roomMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roomMouseExited
+        room.setBackground(bodycolor);
+    }//GEN-LAST:event_roomMouseExited
+
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        loginForm lf = new loginForm();
+        lf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_logoutMouseClicked
+
+    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
+        logout.setBackground(buttoncolor);
+    }//GEN-LAST:event_logoutMouseEntered
+
+    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
+        logout.setBackground(bodycolor);
+    }//GEN-LAST:event_logoutMouseExited
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Session sess = Session.getInstance();
+        
+        if(sess.getUid() == 0){
+            JOptionPane.showMessageDialog(null,"Please Login First!");
+            loginForm lf = new loginForm();
+            lf.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -362,17 +461,21 @@ public class adminPage extends javax.swing.JFrame {
     public javax.swing.JLabel admin_gmail;
     private javax.swing.JPanel booking;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel logout;
     private javax.swing.JPanel reports;
+    private javax.swing.JPanel room;
     private javax.swing.JPanel transaction;
     private javax.swing.JPanel user;
     // End of variables declaration//GEN-END:variables

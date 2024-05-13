@@ -5,6 +5,14 @@
  */
 package internalPages;
 
+import config.Session;
+import java.awt.Color;
+import javax.swing.JOptionPane;
+import myapp.loginForm;
+import user.userBookingPage;
+import user.userReportForm;
+import user.userRoomForm;
+
 /**
  *
  * @author cedricjadee
@@ -16,8 +24,13 @@ public class userPage extends javax.swing.JFrame {
      */
     public userPage() {
         initComponents();
+        
+        mainPage mp = new mainPage();
+        userDesktop.add(mp).setVisible(true);
     }
-
+    
+    Color bodycolor = new Color(51,51,51);
+    Color buttoncolor = new Color(153,153,255);
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,9 +57,18 @@ public class userPage extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        reports = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        logout = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 500));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
@@ -168,6 +190,52 @@ public class userPage extends javax.swing.JFrame {
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, 10));
 
+        reports.setBackground(new java.awt.Color(51, 51, 51));
+        reports.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        reports.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reportsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                reportsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                reportsMouseExited(evt);
+            }
+        });
+        reports.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("REPORTS");
+        reports.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
+
+        jPanel4.add(reports, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 140, 40));
+
+        logout.setBackground(new java.awt.Color(51, 51, 51));
+        logout.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutMouseExited(evt);
+            }
+        });
+        logout.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("LOG OUT");
+        logout.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
+
+        jPanel4.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 140, 40));
+
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 480));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -198,7 +266,8 @@ public class userPage extends javax.swing.JFrame {
     }//GEN-LAST:event_bookingMouseEntered
 
     private void bookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingMouseClicked
-
+        userBookingPage bp = new userBookingPage();
+        userDesktop.add(bp).setVisible(true);
     }//GEN-LAST:event_bookingMouseClicked
 
     private void userMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMouseExited
@@ -210,9 +279,47 @@ public class userPage extends javax.swing.JFrame {
     }//GEN-LAST:event_userMouseEntered
 
     private void userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMouseClicked
-        userForm uf = new userForm();
-        adminDesktop.add(uf).setVisible(true);
+        userRoomForm uf = new userRoomForm();
+        userDesktop.add(uf).setVisible(true);
     }//GEN-LAST:event_userMouseClicked
+
+    private void reportsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportsMouseClicked
+        userReportForm rf = new userReportForm();
+        userDesktop.add(rf).setVisible(true);
+    }//GEN-LAST:event_reportsMouseClicked
+
+    private void reportsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportsMouseEntered
+        reports.setBackground(buttoncolor);
+    }//GEN-LAST:event_reportsMouseEntered
+
+    private void reportsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportsMouseExited
+        reports.setBackground(bodycolor);
+    }//GEN-LAST:event_reportsMouseExited
+
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        loginForm lf = new loginForm();
+        lf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_logoutMouseClicked
+
+    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
+        logout.setBackground(buttoncolor);
+    }//GEN-LAST:event_logoutMouseEntered
+
+    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
+        logout.setBackground(bodycolor);
+    }//GEN-LAST:event_logoutMouseExited
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Session sess = Session.getInstance();
+        
+        if(sess.getUid() == 0){
+            JOptionPane.showMessageDialog(null,"Please Login First!");
+            loginForm lf = new loginForm();
+            lf.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -257,14 +364,18 @@ public class userPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel logout;
+    private javax.swing.JPanel reports;
     private javax.swing.JPanel user;
-    private javax.swing.JDesktopPane userDesktop;
+    public javax.swing.JDesktopPane userDesktop;
     public javax.swing.JLabel user_account;
     public javax.swing.JLabel user_gmail;
     // End of variables declaration//GEN-END:variables

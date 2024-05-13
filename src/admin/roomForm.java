@@ -5,7 +5,8 @@
  */
 package admin;
 
-import user.bookingPage;
+import config.Session;
+import user.userBookingPage;
 import config.dbConnector;
 import internalPages.adminPage;
 import java.awt.BasicStroke;
@@ -20,6 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.TableModel;
+import myapp.loginForm;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -44,7 +46,7 @@ public class roomForm extends javax.swing.JInternalFrame {
     public void displayData(){
         try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT r_id,r_floor,r_prize,r_capacity,r_bedsize,r_type FROM tbl_room");
+            ResultSet rs = dbc.getData("SELECT r_id,r_floor,r_price,r_capacity,r_bedsize,r_type,r_status FROM tbl_room");
             bookingtable.setModel(DbUtils.resultSetToTableModel(rs));
             
         }catch(SQLException ex){
@@ -96,8 +98,26 @@ public class roomForm extends javax.swing.JInternalFrame {
         bookingtable = new javax.swing.JTable();
         add = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        update = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameActivated(evt);
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setMinimumSize(new java.awt.Dimension(610, 420));
@@ -147,30 +167,13 @@ public class roomForm extends javax.swing.JInternalFrame {
         jLabel8.setText("ADD");
         add.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 80, 20));
 
-        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 80, 40));
+        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 80, 40));
 
-        update.setBackground(new java.awt.Color(0, 51, 51));
-        update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        update.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                updateMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                updateMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                updateMouseExited(evt);
-            }
-        });
-        update.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/g2.jpg"))); // NOI18N
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, 80));
 
-        jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("EDIT");
-        update.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 80, 20));
-
-        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 80, 40));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/g1.jpg"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 70, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,7 +203,7 @@ public class roomForm extends javax.swing.JInternalFrame {
         }
 
         if(desktopPane != null){
-            addRoom aa = new addRoom();
+            roomPage aa = new roomPage();
             desktopPane.removeAll();
             desktopPane.add(aa);
             aa.setVisible(true);
@@ -218,75 +221,19 @@ public class roomForm extends javax.swing.JInternalFrame {
         add.setBackground(defbutton);
     }//GEN-LAST:event_addMouseExited
 
-    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
-        int rowindex = bookingtable.getSelectedRow();
-        if(rowindex < 0){
-            JOptionPane.showMessageDialog(null,"Please Select an Item!");
+    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
+        Session sess = Session.getInstance();
+        
+        if(sess.getUid() == 0){
+            JOptionPane.showMessageDialog(null,"Please Login First!");
+            loginForm lf = new loginForm();
+            lf.setVisible(true);
+            this.dispose();
         }else{
             
-            JDesktopPane desktopPane = null;
-            Container parent = this.getParent();
-            while(parent!=null){
-                if(parent instanceof adminPage){
-                    desktopPane = ((adminPage)parent).adminDesktop;
-                    break;
-                }
-                parent = parent.getParent();
-            }
-            
-            if(desktopPane != null){
-                
-                
-                updatePage aa = new updatePage();
-                desktopPane.removeAll();
-                desktopPane.add(aa);
-                try{
-                    dbConnector dbc = new dbConnector();
-                    TableModel model = bookingtable.getModel();
-                    ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '"+model.getValueAt(rowindex, 0)+"'");
-                    
-                    if(rs.next()){
-                        
-          
-                                aa.idnumber.setText(""+rs.getInt("u_id"));
-                                aa.fname.setText(""+rs.getString("u_fname"));
-                                aa.lname.setText(""+rs.getString("u_lname"));
-                                aa.email.setText(""+rs.getString("u_email"));
-                                aa.username.setText(""+rs.getString("u_username"));
-                                aa.password.setText(""+rs.getString("u_password"));
-                                aa.accounttype.setSelectedItem(""+rs.getString("u_type"));
-                                aa.accountstatus.setSelectedItem(""+rs.getString("u_status"));
-                                aa.image.setIcon(aa.ResizeImage(rs.getString("u_image"),null,aa.image));
-                                aa.oldpath = rs.getString("u_image");
-                                aa.path = rs.getString("u_image");
-                                aa.destination = rs.getString("u_image");
-                                if(rs.getString("u_image").isEmpty()){
-                                    aa.upload.setEnabled(true);
-                                    aa.remove.setEnabled(false);
-                                }else{
-                                    aa.upload.setEnabled(false);
-                                    aa.remove.setEnabled(true);
-                                }
-                                aa.setVisible(true);
-                                aa.action = "Update";
-                                aa.label.setText("UPDATE");
-                                
-                          }
-                }catch(SQLException ex){
-                    System.out.println(""+ex);
-                }
-                }
- 
+            cid.setText(""+sess.getUid());
         }
-    }//GEN-LAST:event_updateMouseClicked
-
-    private void updateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseEntered
-        update.setBackground(hover);
-    }//GEN-LAST:event_updateMouseEntered
-
-    private void updateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseExited
-        buttonDefaultColor(update);
-    }//GEN-LAST:event_updateMouseExited
+    }//GEN-LAST:event_formInternalFrameActivated
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -294,12 +241,12 @@ public class roomForm extends javax.swing.JInternalFrame {
     public javax.swing.JTable bookingtable;
     public javax.swing.JLabel cid;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel update;
     // End of variables declaration//GEN-END:variables
 }
