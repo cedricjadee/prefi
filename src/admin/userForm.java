@@ -288,27 +288,46 @@ public class userForm extends javax.swing.JInternalFrame {
             }
             
             if(desktopPane != null){
-                TableModel model = usertable.getModel();
+                
+                
                 updatePage aa = new updatePage();
                 desktopPane.removeAll();
                 desktopPane.add(aa);
+                try{
+                    dbConnector dbc = new dbConnector();
+                    TableModel model = usertable.getModel();
+                    ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '"+model.getValueAt(rowindex, 0)+"'");
+                    
+                    if(rs.next()){
+                        
           
-                aa.idnumber.setText(""+model.getValueAt(rowindex, 0));
-                aa.fname.setText(""+model.getValueAt(rowindex, 1));
-                aa.lname.setText(""+model.getValueAt(rowindex, 2));
-                aa.email.setText(""+model.getValueAt(rowindex, 3));
-                aa.username.setText("");
-                aa.password.setText("");
-                if(aa.accounttype.getSelectedItem().equals("User")){
-                    aa.accounttype.setSelectedItem("User");
-                }else if(aa.accounttype.getSelectedItem().equals("Admin")){
-                    aa.accounttype.setSelectedItem("Admin");
+                                aa.idnumber.setText(""+rs.getInt("u_id"));
+                                aa.fname.setText(""+rs.getString("u_fname"));
+                                aa.lname.setText(""+rs.getString("u_lname"));
+                                aa.email.setText(""+rs.getString("u_email"));
+                                aa.username.setText(""+rs.getString("u_username"));
+                                aa.password.setText(""+rs.getString("u_password"));
+                                aa.accounttype.setSelectedItem(""+rs.getString("u_type"));
+                                aa.accountstatus.setSelectedItem(""+rs.getString("u_status"));
+                                aa.image.setIcon(aa.ResizeImage(rs.getString("u_image"),null,aa.image));
+                                aa.oldpath = rs.getString("u_image");
+                                aa.path = rs.getString("u_image");
+                                aa.destination = rs.getString("u_image");
+                                if(rs.getString("u_image").isEmpty()){
+                                    aa.upload.setEnabled(true);
+                                    aa.remove.setEnabled(false);
+                                }else{
+                                    aa.upload.setEnabled(false);
+                                    aa.remove.setEnabled(true);
+                                }
+                                aa.setVisible(true);
+                                aa.action = "Update";
+                                aa.label.setText("UPDATE");
+                                
+                          }
+                }catch(SQLException ex){
+                    System.out.println(""+ex);
                 }
-                aa.accountstatus.setSelectedItem(model.getValueAt(rowindex, 4));
-
-                aa.setVisible(true);
-                aa.action = "Update";
-                aa.label.setText("UPDATE");
                 }
  
         }
@@ -329,6 +348,8 @@ public class userForm extends javax.swing.JInternalFrame {
             adminApplicants aa = new adminApplicants();
             desktopPane.removeAll();
             desktopPane.add(aa);
+            aa.remove.setEnabled(false);
+            aa.upload.setEnabled(true);
             aa.setVisible(true);
             aa.action = "Add";
             aa.label.setText("SAVE");

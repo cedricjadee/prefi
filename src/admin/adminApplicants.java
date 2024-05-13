@@ -8,9 +8,21 @@ package admin;
 import config.dbConnector;
 import config.passwordHasher;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -30,6 +42,62 @@ public class adminApplicants extends javax.swing.JInternalFrame {
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
     }
+    
+    public String destination = "";
+    File selectedFile;
+    public String oldpath;
+    public String path;
+    
+    public int FileExistenceChecker(String path){
+        File file = new File(path);
+        String fileName = file.getName();
+        
+        Path filePath = Paths.get("src/userimages", fileName);
+        boolean fileExists = Files.exists(filePath);
+        
+        if (fileExists) {
+            return 1;
+        } else {
+            return 0;
+        }
+    
+    }
+    public static int getHeightFromWidth(String imagePath, int desiredWidth) {
+        try {
+            // Read the image file
+            File imageFile = new File(imagePath);
+            BufferedImage image = ImageIO.read(imageFile);
+            
+            // Get the original width and height of the image
+            int originalWidth = image.getWidth();
+            int originalHeight = image.getHeight();
+            
+            // Calculate the new height based on the desired width and the aspect ratio
+            int newHeight = (int) ((double) desiredWidth / originalWidth * originalHeight);
+            
+            return newHeight;
+        } catch (IOException ex) {
+            System.out.println("No image found!");
+        }
+        
+        return -1;
+    }
+    
+    public  ImageIcon ResizeImage(String ImagePath, byte[] pic, JLabel label) {
+    ImageIcon MyImage = null;
+        if(ImagePath !=null){
+            MyImage = new ImageIcon(ImagePath);
+        }else{
+            MyImage = new ImageIcon(pic);
+        }
+        
+    int newHeight = getHeightFromWidth(ImagePath, label.getWidth());
+
+    Image img = MyImage.getImage();
+    Image newImg = img.getScaledInstance(label.getWidth(), newHeight, Image.SCALE_SMOOTH);
+    ImageIcon image = new ImageIcon(newImg);
+    return image;
+}
     public static String us, em;
     
     public boolean duplicateCheck(){
@@ -91,7 +159,6 @@ public class adminApplicants extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         fname = new javax.swing.JTextField();
@@ -103,32 +170,33 @@ public class adminApplicants extends javax.swing.JInternalFrame {
         label1 = new javax.swing.JPanel();
         label = new javax.swing.JLabel();
         accountstatus = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        image = new javax.swing.JLabel();
+        upload = new javax.swing.JButton();
+        remove = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(610, 420));
         jPanel1.setPreferredSize(new java.awt.Dimension(610, 420));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register.jpg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 400));
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Admin Registration");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, 20));
+        jLabel1.setText("Admin ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 20));
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 60, 10));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 20, 10));
 
         fname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         fname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "First Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 190, 50));
+        jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 160, 50));
 
         lname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         lname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         lname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Last Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        jPanel1.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 190, 50));
+        jPanel1.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 170, 50));
 
         email.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         email.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -138,22 +206,22 @@ public class adminApplicants extends javax.swing.JInternalFrame {
                 emailActionPerformed(evt);
             }
         });
-        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 400, 50));
+        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 330, 50));
 
         username.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         username.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         username.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Username", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 400, 50));
+        jPanel1.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 330, 50));
 
         password.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         password.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 400, 50));
+        jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 330, 50));
 
         accounttype.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         accounttype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User" }));
         accounttype.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Type"));
-        jPanel1.add(accounttype, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 190, 50));
+        jPanel1.add(accounttype, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 160, 50));
 
         label1.setBackground(new java.awt.Color(0, 51, 51));
         label1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -176,7 +244,7 @@ public class adminApplicants extends javax.swing.JInternalFrame {
         label.setText("LABEL");
         label1.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 100, 20));
 
-        jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 100, 40));
+        jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 100, 40));
 
         accountstatus.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         accountstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Pending" }));
@@ -186,7 +254,28 @@ public class adminApplicants extends javax.swing.JInternalFrame {
                 accountstatusActionPerformed(evt);
             }
         });
-        jPanel1.add(accountstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 190, 50));
+        jPanel1.add(accountstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 160, 50));
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 180));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 240, 200));
+
+        upload.setText("UPLOAD");
+        upload.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uploadActionPerformed(evt);
+            }
+        });
+        jPanel1.add(upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 90, -1));
+
+        remove.setText("REMOVE");
+        remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 290, 90, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -232,22 +321,27 @@ public class adminApplicants extends javax.swing.JInternalFrame {
                         + "u_username,"
                         + "u_password,"
                         + "u_type,"
-                        + "u_status) VALUES ("
+                        + "u_status,"
+                        + "u_image) VALUES ("
                         + "'"+fname.getText()+"',"
                         + "'"+lname.getText()+"',"
                         + "'"+email.getText()+"',"
                         + "'"+username.getText()+"',"
                         + "'"+pass+"',"
                         + "'"+accounttype.getSelectedItem()+"',"
-                        + "'"+accountstatus.getSelectedItem()+"')");
-
+                        + "'"+accountstatus.getSelectedItem()+"',"
+                        + "'"+destination+"')");
+                        
                     if(true){
+                        Files.copy(selectedFile.toPath(),new File(destination).toPath(),StandardCopyOption.REPLACE_EXISTING);
                         JOptionPane.showMessageDialog(null, "Successfully Save!");
                         close();
                     }else{
                         System.out.println("Saving Data Failed!");
                     }
-                }catch(NoSuchAlgorithmException ex){
+                    
+                    
+                }catch(IOException | NoSuchAlgorithmException ex){
                     System.out.println(""+ex);
                 }
 
@@ -268,20 +362,52 @@ public class adminApplicants extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_accountstatusActionPerformed
 
+    private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removeActionPerformed
+
+    private void uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+                int returnValue = fileChooser.showOpenDialog(null);
+                if (returnValue == JFileChooser.APPROVE_OPTION) {
+                    try {
+                        selectedFile = fileChooser.getSelectedFile();
+                        destination = "src/userimages/" + selectedFile.getName();
+                        path  = selectedFile.getAbsolutePath();
+                        
+                        
+                        if(FileExistenceChecker(path) == 1){
+                          JOptionPane.showMessageDialog(null, "File Already Exist, Rename or Choose another!");
+                            destination = "";
+                            path="";
+                        }else{
+                            image.setIcon(ResizeImage(path, null, image));
+                            upload.setEnabled(false);
+                            remove.setVisible(true);
+                        }
+                    } catch (Exception ex) {
+                        System.out.println("File Error!");
+                    }
+                }
+    }//GEN-LAST:event_uploadActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<String> accountstatus;
     private javax.swing.JComboBox<String> accounttype;
     public javax.swing.JTextField email;
     public javax.swing.JTextField fname;
+    private javax.swing.JLabel image;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     public javax.swing.JLabel label;
     private javax.swing.JPanel label1;
     public javax.swing.JTextField lname;
     public javax.swing.JPasswordField password;
+    public javax.swing.JButton remove;
+    public javax.swing.JButton upload;
     public javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }

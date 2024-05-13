@@ -6,6 +6,8 @@
 package internalPages;
 
 import admin.adminApplicants;
+import admin.roomForm;
+import admin.reportPage;
 import admin.userForm;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -268,7 +270,8 @@ public class adminPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void reportsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportsMouseClicked
-        // TODO add your handling code here:
+        reportPage bf = new reportPage();
+        adminDesktop.add(bf).setVisible(true);
     }//GEN-LAST:event_reportsMouseClicked
 
     private void reportsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportsMouseEntered
@@ -280,7 +283,8 @@ public class adminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_reportsMouseExited
 
     private void bookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingMouseClicked
-
+        roomForm bf = new roomForm();
+        adminDesktop.add(bf).setVisible(true);
     }//GEN-LAST:event_bookingMouseClicked
 
     private void bookingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingMouseEntered
@@ -305,15 +309,15 @@ public class adminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_userMouseExited
 
     private void transactionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionMouseClicked
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_transactionMouseClicked
 
     private void transactionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionMouseEntered
-        // TODO add your handling code here:
+        transaction.setBackground(buttoncolor);
     }//GEN-LAST:event_transactionMouseEntered
 
     private void transactionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionMouseExited
-        // TODO add your handling code here:
+        transaction.setBackground(bodycolor);
     }//GEN-LAST:event_transactionMouseExited
 
     /**

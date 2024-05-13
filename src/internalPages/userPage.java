@@ -38,8 +38,6 @@ public class userPage extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         userDesktop = new javax.swing.JDesktopPane();
         jPanel4 = new javax.swing.JPanel();
-        reports = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         booking = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         user = new javax.swing.JPanel();
@@ -104,29 +102,6 @@ public class userPage extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(204, 204, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        reports.setBackground(new java.awt.Color(51, 51, 51));
-        reports.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        reports.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                reportsMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                reportsMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                reportsMouseExited(evt);
-            }
-        });
-        reports.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("REPORTS");
-        reports.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
-
-        jPanel4.add(reports, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 140, 40));
-
         booking.setBackground(new java.awt.Color(51, 51, 51));
         booking.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         booking.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,7 +143,7 @@ public class userPage extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("USER");
+        jLabel6.setText("ROOMS");
         user.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
 
         jPanel4.add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 140, 40));
@@ -213,18 +188,6 @@ public class userPage extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void reportsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportsMouseExited
-        reports.setBackground(bodycolor);
-    }//GEN-LAST:event_reportsMouseExited
-
-    private void reportsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportsMouseEntered
-        reports.setBackground(buttoncolor);
-    }//GEN-LAST:event_reportsMouseEntered
-
-    private void reportsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportsMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_reportsMouseClicked
 
     private void bookingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingMouseExited
         booking.setBackground(bodycolor);
@@ -294,14 +257,12 @@ public class userPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel reports;
     private javax.swing.JPanel user;
     private javax.swing.JDesktopPane userDesktop;
     public javax.swing.JLabel user_account;

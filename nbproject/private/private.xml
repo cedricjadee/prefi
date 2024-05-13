@@ -5,16 +5,13 @@
         <group>
             <file>file:/C:/Users/cedricjadee/Documents/NetBeansProjects/prefi/src/myapp/registrationForm.java</file>
             <file>file:/C:/Users/cedricjadee/Documents/NetBeansProjects/prefi/src/internalPages/mainPage.java</file>
-            <file>file:/C:/Users/cedricjadee/Documents/NetBeansProjects/prefi/src/config/Session.java</file>
+            <file>file:/C:/Users/cedricjadee/Documents/NetBeansProjects/prefi/src/admin/updatePage.java</file>
             <file>file:/C:/Users/cedricjadee/Documents/NetBeansProjects/prefi/src/admin/userForm.java</file>
-            <file>file:/C:/Users/cedricjadee/Documents/NetBeansProjects/prefi/src/config/passwordHasher.java</file>
             <file>file:/C:/Users/cedricjadee/Documents/NetBeansProjects/prefi/src/admin/adminApplicants.java</file>
             <file>file:/C:/Users/cedricjadee/Documents/NetBeansProjects/prefi/src/myapp/loadingScreen.java</file>
-            <file>file:/C:/Users/cedricjadee/Documents/NetBeansProjects/prefi/src/config/dbConnector.java</file>
-            <file>file:/C:/Users/cedricjadee/Documents/NetBeansProjects/prefi/src/prefi/Prefi.java</file>
+            <file>file:/C:/Users/cedricjadee/Documents/NetBeansProjects/prefi/src/admin/reportPage.java</file>
+            <file>file:/C:/Users/cedricjadee/Documents/NetBeansProjects/prefi/src/admin/bookingForm.java</file>
             <file>file:/C:/Users/cedricjadee/Documents/NetBeansProjects/prefi/src/myapp/loginForm.java</file>
-            <file>file:/C:/Users/cedricjadee/Documents/NetBeansProjects/prefi/src/internalPages/adminPage.java</file>
-            <file>file:/C:/Users/cedricjadee/Documents/NetBeansProjects/prefi/src/internalPages/userPage.java</file>
         </group>
     </open-files>
 </project-private>
