@@ -216,6 +216,11 @@ public class adminApplicants extends javax.swing.JInternalFrame {
         password.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         password.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
+        password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordKeyPressed(evt);
+            }
+        });
         jPanel1.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 330, 50));
 
         accounttype.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
@@ -296,7 +301,7 @@ public class adminApplicants extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_emailActionPerformed
 
     private void label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label1MouseClicked
-
+        
         if(fname.getText().isEmpty() || lname.getText().isEmpty() || email.getText().isEmpty() || username.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "All fields are required!");
         }else if(password.getText().length() < 8){
@@ -390,6 +395,10 @@ public class adminApplicants extends javax.swing.JInternalFrame {
                     }
                 }
     }//GEN-LAST:event_uploadActionPerformed
+
+    private void passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyPressed
+       
+    }//GEN-LAST:event_passwordKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

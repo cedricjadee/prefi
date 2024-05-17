@@ -56,16 +56,17 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        fname = new javax.swing.JTextField();
-        lname = new javax.swing.JTextField();
-        email = new javax.swing.JTextField();
-        contact = new javax.swing.JTextField();
-        price = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
+        in = new javax.swing.JTextField();
+        ds = new javax.swing.JTextField();
         pt = new javax.swing.JComboBox<>();
         status = new javax.swing.JComboBox<>();
         label1 = new javax.swing.JPanel();
         label = new javax.swing.JLabel();
         idnumber = new javax.swing.JTextField();
+        rt = new javax.swing.JComboBox<>();
+        status1 = new javax.swing.JComboBox<>();
+        out = new javax.swing.JTextField();
 
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -101,47 +102,31 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 30, 10));
 
-        fname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        fname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "First Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        jPanel1.add(fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 190, 50));
+        name.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        name.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        name.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
+        jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 400, 50));
 
-        lname.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        lname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        lname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Last Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        jPanel1.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 190, 50));
-
-        email.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        email.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        email.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Email", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        email.setEnabled(false);
-        email.addActionListener(new java.awt.event.ActionListener() {
+        in.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        in.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        in.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Check In", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
+        in.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailActionPerformed(evt);
+                inActionPerformed(evt);
             }
         });
-        jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 400, 50));
+        jPanel1.add(in, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 190, 50));
 
-        contact.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        contact.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        contact.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Contact", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        contact.setEnabled(false);
-        contact.addActionListener(new java.awt.event.ActionListener() {
+        ds.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        ds.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ds.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Date Status", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
+        ds.setEnabled(false);
+        ds.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contactActionPerformed(evt);
+                dsActionPerformed(evt);
             }
         });
-        jPanel1.add(contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 400, 50));
-
-        price.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        price.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        price.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Price", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        price.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                priceActionPerformed(evt);
-            }
-        });
-        jPanel1.add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 400, 50));
+        jPanel1.add(ds, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 190, 50));
 
         pt.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         pt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Card", "Cash" }));
@@ -194,6 +179,32 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
         });
         jPanel1.add(idnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, 90, 40));
 
+        rt.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        rt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single Room", "Double Room", "Triple Room" }));
+        rt.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Room Type", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        rt.setEnabled(false);
+        jPanel1.add(rt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 190, 50));
+
+        status1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        status1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Confirmed", "Pending", "Canceled" }));
+        status1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Status"));
+        status1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                status1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(status1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 190, 50));
+
+        out.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        out.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        out.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Check Out", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
+        out.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                outActionPerformed(evt);
+            }
+        });
+        jPanel1.add(out, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 190, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -216,11 +227,9 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
             
                 dbConnector dbc = new dbConnector();
                 dbc.updateData("UPDATE tbl_booking SET "
-                    + " b_fname =   '"+fname.getText()+"',"
-                    + " b_lname =   '"+lname.getText()+"',"
-                    + " b_email =   '"+email.getText()+"',"
-                    + " b_contact = '"+contact.getText()+"',"        
-                    + " b_price = '"+price.getText()+"',"        
+                    + " b_name =   '"+name.getText()+"',"
+                    + " b_in =   '"+in.getText()+"',"
+                    + " b_out = '"+ds.getText()+"',"        
                     + " b_status = '"+status.getSelectedItem()+"'"
                     + " WHERE b_id = '"+idnumber.getText()+"'");
                 
@@ -243,18 +252,6 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_statusActionPerformed
 
-    private void priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_priceActionPerformed
-
-    private void contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_contactActionPerformed
-
-    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailActionPerformed
-
     private void idnumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idnumberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_idnumberActionPerformed
@@ -263,21 +260,38 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_formInternalFrameActivated
 
+    private void inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inActionPerformed
+
+    private void dsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dsActionPerformed
+
+    private void status1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_status1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_status1ActionPerformed
+
+    private void outActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_outActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTextField contact;
-    public javax.swing.JTextField email;
-    public javax.swing.JTextField fname;
+    public javax.swing.JTextField ds;
     public javax.swing.JTextField idnumber;
+    public javax.swing.JTextField in;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     public javax.swing.JLabel label;
     private javax.swing.JPanel label1;
-    public javax.swing.JTextField lname;
-    public javax.swing.JTextField price;
+    public javax.swing.JTextField name;
+    public javax.swing.JTextField out;
     public javax.swing.JComboBox<String> pt;
+    public javax.swing.JComboBox<String> rt;
     public javax.swing.JComboBox<String> status;
+    public javax.swing.JComboBox<String> status1;
     // End of variables declaration//GEN-END:variables
 }

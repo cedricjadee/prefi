@@ -3,47 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package admin;
+package user;
 
-import config.Session;
-import user.userBookingPage;
 import config.dbConnector;
-import internalPages.adminPage;
-import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.BorderFactory;
-import javax.swing.JDesktopPane;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.border.Border;
-import javax.swing.plaf.basic.BasicInternalFrameUI;
-import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
-import myapp.loginForm;
 import net.proteanit.sql.DbUtils;
 
 /**
  *
  * @author cedricjadee
  */
-public class roomForm extends javax.swing.JInternalFrame {
+public class roomsAvail extends javax.swing.JFrame {
 
     /**
-     * Creates new form bookingForm
+     * Creates new form roomsAvail
      */
-    public roomForm() {
+    public roomsAvail() {
         initComponents();
-        
-        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
-        BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
-        bi.setNorthPane(null);
         
         displayData();
     }
@@ -87,33 +69,12 @@ public class roomForm extends javax.swing.JInternalFrame {
             System.out.println("Errors: "+ex.getMessage());
         
         }
-        
+            } 
     
-    }
+    
     
     Color hover = new Color(0,0,0);
     Color defbutton = new Color(0,51,51);
-    Color registerbutton = new Color (51,51,51);
-    
-
-    Border empty = BorderFactory.createEmptyBorder();
-    
-    void buttonBorderAnimation(JPanel panel){
-        panel.setBackground(hover);
-        panel.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        panel.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(2.0f)));
-    }
-    
-    void buttonDefaultColor(JPanel panel){
-        panel.setBackground(defbutton);
-        panel.setBorder(empty);
-    }
-    
-    void buttonDefaultColor2(JPanel panel){
-        panel.setBackground(registerbutton);
-        panel.setBorder(empty);
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,33 +86,16 @@ public class roomForm extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        cid = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         roomtable = new javax.swing.JTable();
-        add = new javax.swing.JPanel();
+        save = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
-        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameActivated(evt);
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setMinimumSize(new java.awt.Dimension(610, 420));
@@ -161,17 +105,8 @@ public class roomForm extends javax.swing.JInternalFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel3.setText("Current User");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 70, 30));
-
-        cid.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        cid.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cid.setText("ID");
-        jPanel3.add(cid, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, 70, 20));
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("ROOM FORM");
+        jLabel1.setText("ROOMS");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 590, 50));
@@ -180,28 +115,28 @@ public class roomForm extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 590, 270));
 
-        add.setBackground(new java.awt.Color(0, 51, 51));
-        add.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        add.addMouseListener(new java.awt.event.MouseAdapter() {
+        save.setBackground(new java.awt.Color(0, 51, 51));
+        save.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        save.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addMouseClicked(evt);
+                saveMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                addMouseEntered(evt);
+                saveMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                addMouseExited(evt);
+                saveMouseExited(evt);
             }
         });
-        add.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        save.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("ADD");
-        add.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 80, 20));
+        jLabel8.setText("SAVE");
+        save.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 80, 20));
 
-        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 80, 40));
+        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 80, 40));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/g2.jpg"))); // NOI18N
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, 80));
@@ -223,64 +158,65 @@ public class roomForm extends javax.swing.JInternalFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseClicked
-        JDesktopPane desktopPane = null;
-        Container parent = this.getParent();
-        while(parent!=null){
-            if(parent instanceof adminPage){
-                desktopPane = ((adminPage)parent).adminDesktop;
-                break;
+    private void saveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseExited
+        save.setBackground(defbutton);
+    }//GEN-LAST:event_saveMouseExited
+
+    private void saveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseEntered
+        save.setBackground(hover);
+    }//GEN-LAST:event_saveMouseEntered
+
+    private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
+              this.dispose();
+    }//GEN-LAST:event_saveMouseClicked
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
-            parent = parent.getParent();
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(roomsAvail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(roomsAvail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(roomsAvail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(roomsAvail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
 
-        if(desktopPane != null){
-            roomPage aa = new roomPage();
-            desktopPane.removeAll();
-            desktopPane.add(aa);
-            aa.setVisible(true);
-            aa.action = "Add";
-            aa.label.setText("SAVE");
-        }
-
-    }//GEN-LAST:event_addMouseClicked
-
-    private void addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseEntered
-        add.setBackground(hover);
-    }//GEN-LAST:event_addMouseEntered
-
-    private void addMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addMouseExited
-        add.setBackground(defbutton);
-    }//GEN-LAST:event_addMouseExited
-
-    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
-        Session sess = Session.getInstance();
-        
-        if(sess.getUid() == 0){
-            JOptionPane.showMessageDialog(null,"Please Login First!");
-            loginForm lf = new loginForm();
-            lf.setVisible(true);
-            this.dispose();
-        }else{
-            
-            cid.setText(""+sess.getUid());
-        }
-    }//GEN-LAST:event_formInternalFrameActivated
-
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new roomsAvail().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel add;
-    public javax.swing.JLabel cid;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable roomtable;
+    private javax.swing.JPanel save;
     // End of variables declaration//GEN-END:variables
 }

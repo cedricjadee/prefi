@@ -11,14 +11,19 @@ import internalPages.adminPage;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.BorderFactory;
 import javax.swing.JDesktopPane;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import myapp.loginForm;
 import net.proteanit.sql.DbUtils;
@@ -42,12 +47,32 @@ public class userForm extends javax.swing.JInternalFrame {
         displayData();
         
     }
+        Color header = new Color (0,0,204);
+    
+    private void theader(){
+        JTableHeader thead = usertable.getTableHeader();
+        thead.setForeground(header);
+        
+        thead.setFont(new Font("Times New Roman", Font.BOLD, 12));
+        
+        TableColumn col1 = usertable.getColumnModel().getColumn(0);
+        col1.setPreferredWidth(30);
+        TableColumn col2 = usertable.getColumnModel().getColumn(1);
+        col2.setPreferredWidth(30);
+        TableColumn col3 = usertable.getColumnModel().getColumn(2);
+        col3.setPreferredWidth(30);
+        TableColumn col4 = usertable.getColumnModel().getColumn(3);
+        col4.setPreferredWidth(100);
+        TableColumn col5 = usertable.getColumnModel().getColumn(4);
+        col5.setPreferredWidth(30);
+    }
     
     public void displayData(){
         try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT u_id,u_fname,u_lname,u_email,u_status FROM tbl_user");
+            ResultSet rs = dbc.getData("SELECT u_id as 'USER ID',u_fname as 'FIRST NAME',u_lname as 'LAST NAME',u_email as 'EMAIL',u_status as 'STATUS' FROM tbl_user");
             usertable.setModel(DbUtils.resultSetToTableModel(rs));
+            theader();
             
         }catch(SQLException ex){
             System.out.println("Errors: "+ex.getMessage());

@@ -53,7 +53,9 @@ public class userReportForm extends javax.swing.JInternalFrame {
         
         try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT b_id,b_fname,b_lname,b_price,b_status FROM tbl_booking");
+            ResultSet rs = dbc.getData("SELECT tbl_booking.b_id, tbl_user.u_id, tbl_room.r_id, tbl_booking.b_name, tbl_booking.b_roomtype, tbl_booking.b_in, tbl_booking.b_out, tbl_booking.b_paytype, tbl_booking.b_statusdate, tbl_booking.b_status FROM tbl_booking "
+                    + "INNER JOIN tbl_user ON tbl_booking.u_id = tbl_user.u_id "
+                    + "INNER JOIN tbl_room ON tbl_booking.r_id = tbl_room.r_id");
             reporttable.setModel(DbUtils.resultSetToTableModel(rs));
             
         }catch(SQLException ex){
@@ -256,13 +258,13 @@ public class userReportForm extends javax.swing.JInternalFrame {
 
                     if(rs.next()){
 
-                        aa.rid.setText(""+rs.getInt("b_id"));
-                        aa.fname.setText(""+rs.getString("b_fname"));
-                        aa.lname.setText(""+rs.getString("b_lname"));
-                        aa.email.setText(""+rs.getString("b_email"));
-                        aa.cn.setText(""+rs.getString("b_contact"));
-                        aa.price.setText(""+rs.getString("b_price"));
+                        aa.rid.setText(""+rs.getInt("r_id"));
+                        aa.name.setText(""+rs.getString("b_name"));
+                        aa.rt.setText(""+rs.getString("b_roomtype"));
+                        aa.in.setText(""+rs.getString("b_in"));
+                        aa.out.setText(""+rs.getString("b_out"));
                         aa.pt.setText(""+rs.getString("b_paytype"));
+                        aa.ds.setText(""+rs.getString("b_statusdate"));
                         aa.status.setText(""+rs.getString("b_status"));
 
                         aa.setVisible(true);

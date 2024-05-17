@@ -12,14 +12,19 @@ import internalPages.adminPage;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.BorderFactory;
 import javax.swing.JDesktopPane;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import myapp.loginForm;
 import net.proteanit.sql.DbUtils;
@@ -43,11 +48,33 @@ public class bookingForm extends javax.swing.JInternalFrame {
         displayData();
     }
     
+    
+    Color header = new Color (0,0,204);
+    
+    private void theader(){
+        JTableHeader thead = bookingtable.getTableHeader();
+        thead.setForeground(header);
+        
+        thead.setFont(new Font("Times New Roman", Font.BOLD, 12));
+        
+        
+        
+        
+        
+       
+        
+        
+    }
+    
     public void displayData(){
         try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT b_id,b_fname,b_lname,b_contact,b_status FROM tbl_booking");
+            ResultSet rs = dbc.getData("SELECT tbl_booking.b_id, tbl_user.u_id, tbl_room.r_id, tbl_booking.b_name, tbl_booking.b_roomtype, tbl_booking.b_in, tbl_booking.b_out, tbl_booking.b_paytype, tbl_booking.b_statusdate, tbl_booking.b_status FROM tbl_booking "
+                    + "INNER JOIN tbl_user ON tbl_booking.u_id = tbl_user.u_id "
+                    + "INNER JOIN tbl_room ON tbl_booking.r_id = tbl_room.r_id");
             bookingtable.setModel(DbUtils.resultSetToTableModel(rs));
+            theader();
+            
             
         }catch(SQLException ex){
             System.out.println("Errors: "+ex.getMessage());
@@ -57,10 +84,10 @@ public class bookingForm extends javax.swing.JInternalFrame {
     
     }
     
+    
     Color hover = new Color(0,0,0);
     Color defbutton = new Color(0,51,51);
     Color registerbutton = new Color (51,51,51);
-    
 
     Border empty = BorderFactory.createEmptyBorder();
     
@@ -222,12 +249,10 @@ public class bookingForm extends javax.swing.JInternalFrame {
                         
           
                                 aa.idnumber.setText(""+rs.getInt("b_id"));
-                                aa.fname.setText(""+rs.getString("b_fname"));
-                                aa.lname.setText(""+rs.getString("b_fname"));
-                                aa.email.setText(""+rs.getString("b_email"));
-                                aa.contact.setText(""+rs.getString("b_contact"));
-                                aa.price.setText(""+rs.getString("b_price"));
-                                aa.status.setSelectedItem(""+rs.getString("b_status"));
+                                aa.name.setText(""+rs.getString("b_fname"));
+                                aa.in.setText(""+rs.getString("b_email"));
+                                aa.out.setText(""+rs.getString("b_contact"));
+                                aa.ds.setText(""+rs.getString("b_price"));
                                 
                                 aa.setVisible(true);
                                 aa.action = "Update";

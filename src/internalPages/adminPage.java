@@ -9,7 +9,6 @@ import admin.adminApplicants;
 import admin.bookingForm;
 import admin.roomForm;
 import admin.reportForm;
-import admin.transactionForm;
 import admin.userForm;
 import config.Session;
 import java.awt.BasicStroke;
@@ -77,8 +76,6 @@ public class adminPage extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         reports = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        transaction = new javax.swing.JPanel();
-        TRANSACTION = new javax.swing.JLabel();
         booking = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         room = new javax.swing.JPanel();
@@ -139,29 +136,6 @@ public class adminPage extends javax.swing.JFrame {
         reports.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
 
         jPanel3.add(reports, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 140, 40));
-
-        transaction.setBackground(new java.awt.Color(51, 51, 51));
-        transaction.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        transaction.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                transactionMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                transactionMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                transactionMouseExited(evt);
-            }
-        });
-        transaction.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        TRANSACTION.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        TRANSACTION.setForeground(new java.awt.Color(255, 255, 255));
-        TRANSACTION.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TRANSACTION.setText("TRANSACTION");
-        transaction.add(TRANSACTION, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
-
-        jPanel3.add(transaction, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 140, 40));
 
         booking.setBackground(new java.awt.Color(51, 51, 51));
         booking.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -368,19 +342,6 @@ public class adminPage extends javax.swing.JFrame {
         user.setBackground(bodycolor);
     }//GEN-LAST:event_userMouseExited
 
-    private void transactionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionMouseClicked
-        transactionForm tf = new transactionForm();
-        adminDesktop.add(tf).setVisible(true);
-    }//GEN-LAST:event_transactionMouseClicked
-
-    private void transactionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionMouseEntered
-        transaction.setBackground(buttoncolor);
-    }//GEN-LAST:event_transactionMouseEntered
-
-    private void transactionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transactionMouseExited
-        transaction.setBackground(bodycolor);
-    }//GEN-LAST:event_transactionMouseExited
-
     private void roomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roomMouseClicked
         roomForm rf = new roomForm();
         adminDesktop.add(rf).setVisible(true);
@@ -455,7 +416,6 @@ public class adminPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel TRANSACTION;
     public javax.swing.JDesktopPane adminDesktop;
     public javax.swing.JLabel admin_account;
     public javax.swing.JLabel admin_gmail;
@@ -476,7 +436,6 @@ public class adminPage extends javax.swing.JFrame {
     private javax.swing.JPanel logout;
     private javax.swing.JPanel reports;
     private javax.swing.JPanel room;
-    private javax.swing.JPanel transaction;
     private javax.swing.JPanel user;
     // End of variables declaration//GEN-END:variables
 }

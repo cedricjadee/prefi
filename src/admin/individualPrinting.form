@@ -65,32 +65,32 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel2" min="-2" pref="120" max="-2" attributes="0"/>
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="fname" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="name" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel3" min="-2" pref="120" max="-2" attributes="0"/>
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="lname" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="rt" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel4" min="-2" pref="120" max="-2" attributes="0"/>
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="email" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="in" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel5" min="-2" pref="120" max="-2" attributes="0"/>
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="cn" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="out" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel6" min="-2" pref="120" max="-2" attributes="0"/>
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="price" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="pt" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel7" min="-2" pref="120" max="-2" attributes="0"/>
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                          <Component id="pt" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="ds" min="-2" pref="180" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel8" min="-2" pref="120" max="-2" attributes="0"/>
@@ -124,27 +124,27 @@
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel2" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="fname" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="name" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="lname" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="rt" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="email" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="in" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel5" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="cn" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="out" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel6" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="price" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="pt" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel7" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="pt" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="ds" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel8" min="-2" pref="30" max="-2" attributes="0"/>
@@ -178,7 +178,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="FIRST NAME:"/>
+            <Property name="text" type="java.lang.String" value="NAME:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -186,7 +186,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="LAST NAME:"/>
+            <Property name="text" type="java.lang.String" value="ROOM TYPE:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -194,7 +194,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="EMAIL:"/>
+            <Property name="text" type="java.lang.String" value="CHECK IN:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -202,7 +202,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="CONTACT NUMBER:"/>
+            <Property name="text" type="java.lang.String" value="CHECK OUT:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -210,7 +210,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="PRICE:"/>
+            <Property name="text" type="java.lang.String" value="PAYTYPE"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
@@ -218,7 +218,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="PAY TYPE:"/>
+            <Property name="text" type="java.lang.String" value="DATE STATUS:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
@@ -247,7 +247,7 @@
             <Property name="text" type="java.lang.String" value="ROOM ID:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lname">
+        <Component class="javax.swing.JLabel" name="rt">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
@@ -257,7 +257,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="email">
+        <Component class="javax.swing.JLabel" name="in">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
@@ -267,17 +267,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="cn">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="1"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="price">
+        <Component class="javax.swing.JLabel" name="out">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
@@ -297,6 +287,16 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
+        <Component class="javax.swing.JLabel" name="ds">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
         <Component class="javax.swing.JLabel" name="status">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -307,7 +307,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="fname">
+        <Component class="javax.swing.JLabel" name="name">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>

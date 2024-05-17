@@ -12,6 +12,7 @@ import internalPages.adminPage;
 import internalPages.userPage;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -183,6 +184,11 @@ public class loginForm extends javax.swing.JFrame {
         password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         password.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
         password.setOpaque(false);
+        password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordKeyPressed(evt);
+            }
+        });
         jPanel3.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 300, 50));
 
         cancel.setBackground(new java.awt.Color(0, 51, 51));
@@ -329,6 +335,39 @@ public class loginForm extends javax.swing.JFrame {
     private void loginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseExited
         buttonDefaultColor(login);
     }//GEN-LAST:event_loginMouseExited
+
+    private void passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            Session sess = Session.getInstance();
+
+        if(loginAcc(username.getText(), password.getText())){
+            if(!status.equals("Active")){
+                JOptionPane.showMessageDialog(null,"Pending Account, Wait for the Admin to Approval!");
+            }else{
+                if(type.equals("Admin")){
+                    JOptionPane.showMessageDialog(null, "Login Successfully!");
+                    adminPage ap = new adminPage();
+                    ap.admin_account.setText(""+sess.getFname());
+                    ap.admin_gmail.setText(""+sess.getEmail());
+                    ap.setVisible(true);
+                    this.dispose();
+                }else if(type.equals("User")){
+                    JOptionPane.showMessageDialog(null, "Login Successfully!");
+                    userPage up = new userPage();
+                    up.user_account.setText(""+sess.getFname());
+                    up.user_gmail.setText(""+sess.getEmail());
+                    up.setVisible(true);
+                    this.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null, "No account type, Contact the Admin!");
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Invalid Account!");
+            password.setText("");
+        }
+        }
+    }//GEN-LAST:event_passwordKeyPressed
 
     /**
      * @param args the command line arguments
