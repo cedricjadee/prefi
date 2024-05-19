@@ -13,8 +13,11 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.swing.BorderFactory;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
@@ -23,6 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
@@ -68,13 +72,20 @@ public class bookingForm extends javax.swing.JInternalFrame {
     
     public void displayData(){
         try{
+            userBookingPage bp = new userBookingPage();
             dbConnector dbc = new dbConnector();
+            
             ResultSet rs = dbc.getData("SELECT tbl_booking.b_id, tbl_user.u_id, tbl_room.r_id, tbl_booking.b_name, tbl_booking.b_roomtype, tbl_booking.b_in, tbl_booking.b_out, tbl_booking.b_paytype, tbl_booking.b_statusdate, tbl_booking.b_status FROM tbl_booking "
                     + "INNER JOIN tbl_user ON tbl_booking.u_id = tbl_user.u_id "
                     + "INNER JOIN tbl_room ON tbl_booking.r_id = tbl_room.r_id");
             bookingtable.setModel(DbUtils.resultSetToTableModel(rs));
+            
+            
+            
+                    
             theader();
             
+
             
         }catch(SQLException ex){
             System.out.println("Errors: "+ex.getMessage());
@@ -249,10 +260,10 @@ public class bookingForm extends javax.swing.JInternalFrame {
                         
           
                                 aa.idnumber.setText(""+rs.getInt("b_id"));
-                                aa.name.setText(""+rs.getString("b_fname"));
-                                aa.in.setText(""+rs.getString("b_email"));
-                                aa.out.setText(""+rs.getString("b_contact"));
-                                aa.ds.setText(""+rs.getString("b_price"));
+                                aa.name.setText(""+rs.getString("b_name"));
+                                aa.in.setDate(rs.getDate("b_in"));
+                                aa.out.setDate(rs.getDate("b_out"));
+                                aa.ds.setText(""+rs.getString("b_statusdate"));
                                 
                                 aa.setVisible(true);
                                 aa.action = "Update";

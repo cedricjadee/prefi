@@ -368,7 +368,11 @@ public class adminApplicants extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_accountstatusActionPerformed
 
     private void removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeActionPerformed
-        // TODO add your handling code here:
+        remove.setEnabled(false);
+        upload.setEnabled(true);
+        image.setIcon(null);
+        destination = "";
+        path = "";
     }//GEN-LAST:event_removeActionPerformed
 
     private void uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadActionPerformed

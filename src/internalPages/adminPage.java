@@ -6,18 +6,27 @@
 package internalPages;
 
 import admin.adminApplicants;
+import admin.adminSettings;
 import admin.bookingForm;
 import admin.roomForm;
 import admin.reportForm;
+import admin.updatePage;
 import admin.userForm;
 import config.Session;
+import config.dbConnector;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import myapp.loginForm;
+import user.userBookingPage;
 
 /**
  *
@@ -86,6 +95,8 @@ public class adminPage extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         logout = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        settings = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         adminDesktop = new javax.swing.JDesktopPane();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -249,6 +260,29 @@ public class adminPage extends javax.swing.JFrame {
 
         jPanel3.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 140, 40));
 
+        settings.setBackground(new java.awt.Color(51, 51, 51));
+        settings.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        settings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                settingsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                settingsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                settingsMouseExited(evt);
+            }
+        });
+        settings.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("ACCOUNT SETTINGS");
+        settings.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
+
+        jPanel3.add(settings, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 140, 40));
+
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 480));
 
         adminDesktop.setMinimumSize(new java.awt.Dimension(610, 420));
@@ -317,8 +351,8 @@ public class adminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_reportsMouseExited
 
     private void bookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingMouseClicked
-        bookingForm bf = new bookingForm();
-        adminDesktop.add(bf).setVisible(true);
+            bookingForm bf = new bookingForm();
+            adminDesktop.add(bf).setVisible(true);
     }//GEN-LAST:event_bookingMouseClicked
 
     private void bookingMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingMouseEntered
@@ -380,6 +414,50 @@ public class adminPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowActivated
 
+    private void settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseClicked
+        adminSettings aa = new adminSettings();
+        adminDesktop.add(aa).setVisible(true);
+        
+                
+                try{
+                    dbConnector dbc = new dbConnector();
+                    ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '"+aa.cid.getText()+"'");
+                    
+                    if(rs.next()){
+                        
+          
+                                aa.cid.setText(""+rs.getInt("u_id"));
+                                aa.fn.setText(""+rs.getString("u_fname"));
+                                aa.ln.setText(""+rs.getString("u_lname"));
+                                aa.em.setText(""+rs.getString("u_email"));
+                                aa.un.setText(""+rs.getString("u_username"));
+                                
+                                aa.image.setIcon(aa.ResizeImage(rs.getString("u_image"),null,aa.image));
+                                aa.oldpath = rs.getString("u_image");
+                                aa.path = rs.getString("u_image");
+                                aa.destination = rs.getString("u_image");
+                                if(rs.getString("u_image").isEmpty()){
+                                    aa.upload.setEnabled(true);
+                                    aa.remove.setEnabled(false);
+                                }else{
+                                    aa.upload.setEnabled(false);
+                                    aa.remove.setEnabled(true);
+                                }
+                                aa.setVisible(true);
+                          }
+                }catch(SQLException ex){
+                    System.out.println(""+ex);
+                }
+    }//GEN-LAST:event_settingsMouseClicked
+
+    private void settingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseEntered
+        settings.setBackground(buttoncolor);
+    }//GEN-LAST:event_settingsMouseEntered
+
+    private void settingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseExited
+        settings.setBackground(bodycolor);
+    }//GEN-LAST:event_settingsMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -422,6 +500,7 @@ public class adminPage extends javax.swing.JFrame {
     private javax.swing.JPanel booking;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -436,6 +515,7 @@ public class adminPage extends javax.swing.JFrame {
     private javax.swing.JPanel logout;
     private javax.swing.JPanel reports;
     private javax.swing.JPanel room;
+    private javax.swing.JPanel settings;
     private javax.swing.JPanel user;
     // End of variables declaration//GEN-END:variables
 }

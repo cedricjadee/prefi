@@ -6,6 +6,7 @@
 package user;
 
 import admin.adminApplicants;
+import admin.bookingForm;
 import admin.roomForm;
 import admin.userForm;
 import config.Session;
@@ -13,10 +14,17 @@ import config.dbConnector;
 import internalPages.adminPage;
 import java.awt.Color;
 import java.awt.Container;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import java.time.LocalDate;
+import javax.swing.JComboBox;
 import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
 /**
  *
  * @author cedricjadee
@@ -32,9 +40,31 @@ public class userBookingPage extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
-        
+        displayData();
     }
     
+    public void displayData(){
+        
+        try {
+                dbConnector dbc = new dbConnector();
+                ResultSet rs = dbc.getData("SELECT r_id as 'ROOM ID', r_floor as 'ROOM FLOOR', r_price as 'PRICE', r_capacity as 'CAPACITY', r_bedsize as 'BEDSIZE', r_type as 'ROOM TYPE', r_status as 'STATUS' FROM tbl_room");
+
+                while (rs.next()) {
+                String id = rs.getString("ROOM ID"); // Use the alias name 'ROOM ID'
+                rid.addItem(id);
+                }
+
+                } catch (SQLException ex) {
+                System.out.println("Errors: " + ex.getMessage());
+                }
+
+                // Display the JComboBox on a JFrame
+               
+            }
+
+        
+    
+
     
     public static LocalDate currentDate = LocalDate.now();
         
@@ -69,11 +99,10 @@ public class userBookingPage extends javax.swing.JInternalFrame {
         label1 = new javax.swing.JPanel();
         label = new javax.swing.JLabel();
         name = new javax.swing.JTextField();
-        in = new javax.swing.JTextField();
-        out = new javax.swing.JTextField();
         rt = new javax.swing.JComboBox<>();
-        rid = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        in = new com.toedter.calendar.JDateChooser();
+        out = new com.toedter.calendar.JDateChooser();
+        rid = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(610, 420));
@@ -94,7 +123,7 @@ public class userBookingPage extends javax.swing.JInternalFrame {
         pt.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         pt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Card", "Cash" }));
         pt.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Pay Type"));
-        jPanel1.add(pt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 190, 50));
+        jPanel1.add(pt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 190, 50));
 
         label1.setBackground(new java.awt.Color(0, 51, 51));
         label1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -124,43 +153,27 @@ public class userBookingPage extends javax.swing.JInternalFrame {
         name.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
         jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 400, 50));
 
-        in.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        in.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        in.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Check In", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        in.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inActionPerformed(evt);
-            }
-        });
-        jPanel1.add(in, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 190, 50));
-
-        out.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        out.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        out.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Check Out", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        out.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                outActionPerformed(evt);
-            }
-        });
-        jPanel1.add(out, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 190, 50));
-
         rt.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         rt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single Room", "Double Room", "Triple Room" }));
         rt.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Room Type", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
-        jPanel1.add(rt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 190, 50));
+        jPanel1.add(rt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 190, 50));
 
-        rid.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        rid.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        rid.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "ROOM ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        jPanel1.add(rid, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 120, 50));
+        in.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Check In", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        in.setDateFormatString("yyyy-MM-dd");
+        jPanel1.add(in, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 190, 60));
 
-        jButton1.setText("SEARCH");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        out.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Check Out", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        out.setDateFormatString("yyyy-MM-dd");
+        jPanel1.add(out, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 190, 60));
+
+        rid.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rid.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "ROOM ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        rid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ridActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 40, -1, -1));
+        jPanel1.add(rid, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 140, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,10 +191,13 @@ public class userBookingPage extends javax.swing.JInternalFrame {
 
     private void label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label1MouseClicked
 
-        if(name.getText().isEmpty() || in.getText().isEmpty() || out.getText().isEmpty()){
+        if(name.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "All fields are required!");
         }else{
                 try{
+                    
+                        
+                    
                     Session sess = Session.getInstance();
                     dbConnector dbc = new dbConnector();
                     boolean result = dbc.insertData("INSERT INTO tbl_booking ("
@@ -196,16 +212,21 @@ public class userBookingPage extends javax.swing.JInternalFrame {
                         + "b_roomtype,"
                         + "b_status) VALUES ("
                         + "'"+sess.getUid()+"',"    
-                        + "'"+rid.getText()+"',"    
+                        + "'"+rid.getSelectedItem()+"',"    
                         + "'"+name.getText()+"',"
-                        + "'"+in.getText()+"',"
-                        + "'"+out.getText()+"',"
+                        + "'"+in.getDate()+"',"
+                        + "'"+out.getDate()+"',"
                         + "'"+currentDate+"',"
                         + "'"+pt.getSelectedItem()+"',"
                         + "'"+rt.getSelectedItem()+"',"
                         + "'Pending')");
-
+                            
+                        
+                        
+                     
+                        
                     if(true){
+                        
                         JOptionPane.showMessageDialog(null, "Successfully Save!");
                         close();
                     }else{
@@ -227,28 +248,14 @@ public class userBookingPage extends javax.swing.JInternalFrame {
         label1.setBackground(button);
     }//GEN-LAST:event_label1MouseExited
 
-    private void inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inActionPerformed
+    private void ridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ridActionPerformed
 
-    private void outActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_outActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        roomsAvail ra = new roomsAvail();
-        ra.setVisible(true);
-        
-        int i = ra.roomtable.getSelectedRow();
-        
-        String id = ra.roomtable.getValueAt(i,0).toString();
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    }//GEN-LAST:event_ridActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JTextField in;
-    private javax.swing.JButton jButton1;
+    public com.toedter.calendar.JDateChooser in;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -256,9 +263,9 @@ public class userBookingPage extends javax.swing.JInternalFrame {
     public javax.swing.JLabel label;
     private javax.swing.JPanel label1;
     public javax.swing.JTextField name;
-    public javax.swing.JTextField out;
+    public com.toedter.calendar.JDateChooser out;
     private javax.swing.JComboBox<String> pt;
-    public javax.swing.JTextField rid;
+    public javax.swing.JComboBox<String> rid;
     public javax.swing.JComboBox<String> rt;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,13 +5,18 @@
  */
 package internalPages;
 
+import admin.adminSettings;
 import config.Session;
+import config.dbConnector;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import myapp.loginForm;
 import user.userBookingPage;
 import user.userReportForm;
 import user.userRoomForm;
+import user.userSettings;
 
 /**
  *
@@ -59,6 +64,8 @@ public class userPage extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         reports = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        settings = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         logout = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -213,6 +220,29 @@ public class userPage extends javax.swing.JFrame {
 
         jPanel4.add(reports, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 140, 40));
 
+        settings.setBackground(new java.awt.Color(51, 51, 51));
+        settings.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        settings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                settingsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                settingsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                settingsMouseExited(evt);
+            }
+        });
+        settings.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("ACCOUNT SETTINGS");
+        settings.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
+
+        jPanel4.add(settings, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 140, 40));
+
         logout.setBackground(new java.awt.Color(51, 51, 51));
         logout.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         logout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -266,7 +296,7 @@ public class userPage extends javax.swing.JFrame {
     }//GEN-LAST:event_bookingMouseEntered
 
     private void bookingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookingMouseClicked
-        userBookingPage bp = new userBookingPage();
+        userBookingPage bp = new userBookingPage();   
         userDesktop.add(bp).setVisible(true);
     }//GEN-LAST:event_bookingMouseClicked
 
@@ -321,6 +351,50 @@ public class userPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowActivated
 
+    private void settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseClicked
+        userSettings aa = new userSettings();
+        userDesktop.add(aa).setVisible(true);
+        
+                
+                try{
+                    dbConnector dbc = new dbConnector();
+                    ResultSet rs = dbc.getData("SELECT * FROM tbl_user WHERE u_id = '"+aa.cid.getText()+"'");
+                    
+                    if(rs.next()){
+                        
+          
+                                aa.cid.setText(""+rs.getInt("u_id"));
+                                aa.fn.setText(""+rs.getString("u_fname"));
+                                aa.ln.setText(""+rs.getString("u_lname"));
+                                aa.em.setText(""+rs.getString("u_email"));
+                                aa.un.setText(""+rs.getString("u_username"));
+                                
+                                aa.image.setIcon(aa.ResizeImage(rs.getString("u_image"),null,aa.image));
+                                aa.oldpath = rs.getString("u_image");
+                                aa.path = rs.getString("u_image");
+                                aa.destination = rs.getString("u_image");
+                                if(rs.getString("u_image").isEmpty()){
+                                    aa.upload.setEnabled(true);
+                                    aa.remove.setEnabled(false);
+                                }else{
+                                    aa.upload.setEnabled(false);
+                                    aa.remove.setEnabled(true);
+                                }
+                                aa.setVisible(true);
+                          }
+                }catch(SQLException ex){
+                    System.out.println(""+ex);
+                }
+    }//GEN-LAST:event_settingsMouseClicked
+
+    private void settingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseEntered
+        settings.setBackground(buttoncolor);
+    }//GEN-LAST:event_settingsMouseEntered
+
+    private void settingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseExited
+        settings.setBackground(bodycolor);
+    }//GEN-LAST:event_settingsMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -359,6 +433,7 @@ public class userPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel booking;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -374,6 +449,7 @@ public class userPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel logout;
     private javax.swing.JPanel reports;
+    private javax.swing.JPanel settings;
     private javax.swing.JPanel user;
     public javax.swing.JDesktopPane userDesktop;
     public javax.swing.JLabel user_account;
