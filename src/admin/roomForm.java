@@ -67,9 +67,9 @@ public class roomForm extends javax.swing.JInternalFrame {
         TableColumn col5 = roomtable.getColumnModel().getColumn(4);
         col5.setPreferredWidth(40);
         TableColumn col6 = roomtable.getColumnModel().getColumn(5);
-        col6.setPreferredWidth(60);
+        col6.setPreferredWidth(50);
         TableColumn col7 = roomtable.getColumnModel().getColumn(6);
-        col7.setPreferredWidth(40);
+        col7.setPreferredWidth(50);
         
         
         

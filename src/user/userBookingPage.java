@@ -80,7 +80,7 @@ public class userBookingPage extends javax.swing.JInternalFrame {
     
         Color hover = new Color(0,0,0);
         Color button = new Color (0,51,51);
-        public String action;
+        public String action,status;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -196,47 +196,55 @@ public class userBookingPage extends javax.swing.JInternalFrame {
         }else{
                 try{
                     
-                        
-                    
                     Session sess = Session.getInstance();
                     dbConnector dbc = new dbConnector();
-                    boolean result = dbc.insertData("INSERT INTO tbl_booking ("
-                            
-                        + "u_id,"
-                        + "r_id,"   
-                        + "b_name,"
-                        + "b_in,"
-                        + "b_out,"
-                        + "b_statusdate,"
-                        + "b_paytype,"
-                        + "b_roomtype,"
-                        + "b_status) VALUES ("
-                        + "'"+sess.getUid()+"',"    
-                        + "'"+rid.getSelectedItem()+"',"    
-                        + "'"+name.getText()+"',"
-                        + "'"+in.getDate()+"',"
-                        + "'"+out.getDate()+"',"
-                        + "'"+currentDate+"',"
-                        + "'"+pt.getSelectedItem()+"',"
-                        + "'"+rt.getSelectedItem()+"',"
-                        + "'Pending')");
-                            
-                        
-                        
                      
-                        
-                    if(true){
-                        
-                        JOptionPane.showMessageDialog(null, "Successfully Save!");
+                    String query = "SELECT * FROM tbl_room WHERE r_id = '"+rid.getSelectedItem()+"'";
+                    ResultSet resultSet = dbc.getData(query);
+                    if(resultSet.next()){  
+                    
+                        status = resultSet.getString("r_status");
+                        if(!status.equalsIgnoreCase("Available")){
+                                JOptionPane.showMessageDialog(null, "ROOM IS NOT AVAILABLE!");
+                        }else{
+                                    boolean result = dbc.insertData("INSERT INTO tbl_booking ("
+
+                                        + "u_id,"
+                                        + "r_id,"   
+                                        + "b_name,"
+                                        + "b_in,"
+                                        + "b_out,"
+                                        + "b_statusdate,"
+                                        + "b_paytype,"
+                                        + "b_roomtype,"
+                                        + "b_status) VALUES ("
+                                        + "'"+sess.getUid()+"',"    
+                                        + "'"+rid.getSelectedItem()+"',"    
+                                        + "'"+name.getText()+"',"
+                                        + "'"+in.getDate()+"',"
+                                        + "'"+out.getDate()+"',"
+                                        + "'"+currentDate+"',"
+                                        + "'"+pt.getSelectedItem()+"',"
+                                        + "'"+rt.getSelectedItem()+"',"
+                                        + "'Pending')");
+                                    
+                                if(true){   
+                                    dbc.updateData("UPDATE tbl_room SET "
+                                        + " r_status = 'Not Available'"
+                                        + " WHERE r_id = '"+rid.getSelectedItem()+"'");
+                                    JOptionPane.showMessageDialog(null, "BOOKED Successfully!");
+                                }else{
+                                    JOptionPane.showMessageDialog(null, "BOOKED Successfully!");
+                                }
+                              }
                         close();
+                        
                     }else{
                         System.out.println("Saving Data Failed!");
                     }
                 }catch(Exception ex){
                     System.out.println(""+ex);
                 }
-
-            
         }
     }//GEN-LAST:event_label1MouseClicked
 
@@ -249,8 +257,8 @@ public class userBookingPage extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_label1MouseExited
 
     private void ridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ridActionPerformed
-
-    
+                                   
+        
     }//GEN-LAST:event_ridActionPerformed
 
 
