@@ -95,7 +95,6 @@ public class reportForm extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         cid = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        segregate = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         reporttable = new javax.swing.JTable();
         individual = new javax.swing.JPanel();
@@ -143,9 +142,6 @@ public class reportForm extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("REPORTS");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
-
-        segregate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All Booking", "Reservation" }));
-        jPanel3.add(segregate, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 590, 50));
 
@@ -328,6 +324,5 @@ public class reportForm extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel print;
     public javax.swing.JTable reporttable;
-    private javax.swing.JComboBox<String> segregate;
     // End of variables declaration//GEN-END:variables
 }
