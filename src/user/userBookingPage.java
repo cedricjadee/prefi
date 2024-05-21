@@ -234,7 +234,7 @@ public class userBookingPage extends javax.swing.JInternalFrame {
                                         + " WHERE r_id = '"+rid.getSelectedItem()+"'");
                                     JOptionPane.showMessageDialog(null, "BOOKED Successfully!");
                                 }else{
-                                    JOptionPane.showMessageDialog(null, "BOOKED Successfully!");
+                                    JOptionPane.showMessageDialog(null, "BOOKED Failed!");
                                 }
                               }
                         close();

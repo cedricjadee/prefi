@@ -419,7 +419,7 @@ public class registrationForm extends javax.swing.JFrame {
                 }catch(Exception ex){
                     System.out.println(""+ex);
                 }
-                JOptionPane.showMessageDialog(null, "Inserted Successfully");
+                
                 loginForm lf = new loginForm();
                 lf.setVisible(true);
                 this.dispose();
