@@ -105,8 +105,8 @@ public class userBookingPage extends javax.swing.JInternalFrame {
         rid = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMinimumSize(new java.awt.Dimension(610, 420));
-        jPanel1.setPreferredSize(new java.awt.Dimension(610, 420));
+        jPanel1.setMinimumSize(new java.awt.Dimension(659, 420));
+        jPanel1.setPreferredSize(new java.awt.Dimension(659, 420));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register.jpg"))); // NOI18N
@@ -123,7 +123,7 @@ public class userBookingPage extends javax.swing.JInternalFrame {
         pt.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         pt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Card", "Cash" }));
         pt.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Pay Type"));
-        jPanel1.add(pt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 190, 50));
+        jPanel1.add(pt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 190, 50));
 
         label1.setBackground(new java.awt.Color(0, 51, 51));
         label1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -146,25 +146,25 @@ public class userBookingPage extends javax.swing.JInternalFrame {
         label.setText("BOOK");
         label1.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 100, 20));
 
-        jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 100, 40));
+        jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, 100, 40));
 
         name.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         name.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         name.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 400, 50));
+        jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 400, 50));
 
         rt.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         rt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single Room", "Double Room", "Triple Room" }));
         rt.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Room Type", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
-        jPanel1.add(rt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 190, 50));
+        jPanel1.add(rt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 190, 50));
 
         in.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Check In", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         in.setDateFormatString("yyyy-MM-dd");
-        jPanel1.add(in, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 190, 60));
+        jPanel1.add(in, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 190, 60));
 
         out.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Check Out", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         out.setDateFormatString("yyyy-MM-dd");
-        jPanel1.add(out, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 190, 60));
+        jPanel1.add(out, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, 190, 60));
 
         rid.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         rid.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "ROOM ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -173,7 +173,7 @@ public class userBookingPage extends javax.swing.JInternalFrame {
                 ridActionPerformed(evt);
             }
         });
-        jPanel1.add(rid, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 140, 50));
+        jPanel1.add(rid, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 140, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -207,6 +207,12 @@ public class userBookingPage extends javax.swing.JInternalFrame {
                         if(!status.equalsIgnoreCase("Available")){
                                 JOptionPane.showMessageDialog(null, "ROOM IS NOT AVAILABLE!");
                         }else{
+                            
+                                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+                                        String formattedInDate = sdf.format(in.getDate());
+                                        String formattedOutDate = sdf.format(out.getDate());
+                                        
                                     boolean result = dbc.insertData("INSERT INTO tbl_booking ("
 
                                         + "u_id,"
@@ -221,8 +227,8 @@ public class userBookingPage extends javax.swing.JInternalFrame {
                                         + "'"+sess.getUid()+"',"    
                                         + "'"+rid.getSelectedItem()+"',"    
                                         + "'"+name.getText()+"',"
-                                        + "'"+in.getDate()+"',"
-                                        + "'"+out.getDate()+"',"
+                                        + "'"+formattedInDate+"',"
+                                        + "'"+formattedOutDate+"',"
                                         + "'"+currentDate+"',"
                                         + "'"+pt.getSelectedItem()+"',"
                                         + "'"+rt.getSelectedItem()+"',"

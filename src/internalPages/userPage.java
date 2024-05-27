@@ -46,13 +46,6 @@ public class userPage extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        user_account = new javax.swing.JLabel();
-        user_gmail = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         userDesktop = new javax.swing.JDesktopPane();
         jPanel4 = new javax.swing.JPanel();
@@ -68,6 +61,13 @@ public class userPage extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         logout = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        user_account = new javax.swing.JLabel();
+        user_gmail = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -81,35 +81,6 @@ public class userPage extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-5-star-hotel-64.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, 50));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("CEDRIC HOTEL LUXURY TOURIST RESERVATION");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
-
-        user_account.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 10)); // NOI18N
-        user_account.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        user_account.setText("USER");
-        jPanel2.add(user_account, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 100, -1));
-
-        user_gmail.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 10)); // NOI18N
-        user_gmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        user_gmail.setText("EMAIL");
-        jPanel2.add(user_gmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 100, -1));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-admin-50.png"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, 50));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-circle-50.png"))); // NOI18N
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, 50));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 620, 60));
-
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -117,16 +88,16 @@ public class userPage extends javax.swing.JFrame {
         userDesktop.setLayout(userDesktopLayout);
         userDesktopLayout.setHorizontalGroup(
             userDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+            .addGap(0, 670, Short.MAX_VALUE)
         );
         userDesktopLayout.setVerticalGroup(
             userDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 420, Short.MAX_VALUE)
         );
 
-        jPanel3.add(userDesktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 420));
+        jPanel3.add(userDesktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 670, 420));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 610, 420));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 670, 420));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -268,13 +239,40 @@ public class userPage extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 480));
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-5-star-hotel-64.png"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, 50));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setText("CEDRIC HOTEL LUXURY TOURIST RESERVATION");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, -1, -1));
+
+        user_account.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 10)); // NOI18N
+        user_account.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        user_account.setText("USER");
+        jPanel2.add(user_account, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 100, -1));
+
+        user_gmail.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 10)); // NOI18N
+        user_gmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        user_gmail.setText("EMAIL");
+        jPanel2.add(user_gmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 100, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-admin-50.png"))); // NOI18N
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, -1, 50));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-circle-50.png"))); // NOI18N
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, -1, 50));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 500));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

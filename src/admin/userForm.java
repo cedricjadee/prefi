@@ -55,16 +55,7 @@ public class userForm extends javax.swing.JInternalFrame {
         
         thead.setFont(new Font("Times New Roman", Font.BOLD, 12));
         
-        TableColumn col1 = usertable.getColumnModel().getColumn(0);
-        col1.setPreferredWidth(30);
-        TableColumn col2 = usertable.getColumnModel().getColumn(1);
-        col2.setPreferredWidth(30);
-        TableColumn col3 = usertable.getColumnModel().getColumn(2);
-        col3.setPreferredWidth(30);
-        TableColumn col4 = usertable.getColumnModel().getColumn(3);
-        col4.setPreferredWidth(100);
-        TableColumn col5 = usertable.getColumnModel().getColumn(4);
-        col5.setPreferredWidth(30);
+        
     }
     
     public void displayData(){
@@ -132,8 +123,8 @@ public class userForm extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
-        setMinimumSize(new java.awt.Dimension(610, 420));
-        setPreferredSize(new java.awt.Dimension(610, 420));
+        setMinimumSize(new java.awt.Dimension(675, 450));
+        setPreferredSize(new java.awt.Dimension(675, 450));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameActivated(evt);
@@ -153,7 +144,7 @@ public class userForm extends javax.swing.JInternalFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel1.setMinimumSize(new java.awt.Dimension(610, 420));
+        jPanel1.setMinimumSize(new java.awt.Dimension(675, 450));
         jPanel1.setPreferredSize(new java.awt.Dimension(610, 420));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -162,22 +153,22 @@ public class userForm extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel3.setText("Current User");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 70, 30));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 70, 30));
 
         cid.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         cid.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cid.setText("ID");
-        jPanel3.add(cid, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, 70, 20));
+        jPanel3.add(cid, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 70, 20));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("USER FORM");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 590, 50));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 650, 50));
 
         jScrollPane1.setViewportView(usertable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 590, 270));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 650, 270));
 
         add.setBackground(new java.awt.Color(0, 51, 51));
         add.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -258,7 +249,7 @@ public class userForm extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 659, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

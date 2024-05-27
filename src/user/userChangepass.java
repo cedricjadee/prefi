@@ -78,8 +78,8 @@ public class userChangepass extends javax.swing.JInternalFrame {
         changePass.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 190, 28));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMinimumSize(new java.awt.Dimension(610, 420));
-        jPanel1.setPreferredSize(new java.awt.Dimension(610, 420));
+        jPanel1.setMinimumSize(new java.awt.Dimension(659, 420));
+        jPanel1.setPreferredSize(new java.awt.Dimension(659, 420));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

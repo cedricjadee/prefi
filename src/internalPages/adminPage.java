@@ -291,40 +291,38 @@ public class adminPage extends javax.swing.JFrame {
         adminDesktop.setLayout(adminDesktopLayout);
         adminDesktopLayout.setHorizontalGroup(
             adminDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+            .addGap(0, 670, Short.MAX_VALUE)
         );
         adminDesktopLayout.setVerticalGroup(
             adminDesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 420, Short.MAX_VALUE)
         );
 
-        jPanel2.add(adminDesktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 610, 420));
+        jPanel2.add(adminDesktop, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 670, 420));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-admin-50.png"))); // NOI18N
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, -1, 50));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, -1, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-circle-50.png"))); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, -1, 50));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, -1, 50));
 
         admin_account.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 10)); // NOI18N
         admin_account.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         admin_account.setText("ADMIN");
-        jPanel2.add(admin_account, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 40, 100, -1));
+        jPanel2.add(admin_account, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 100, -1));
 
         admin_gmail.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 10)); // NOI18N
         admin_gmail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         admin_gmail.setText("EMAIL");
-        jPanel2.add(admin_gmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 100, -1));
+        jPanel2.add(admin_gmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 100, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 500));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 860, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

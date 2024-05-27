@@ -21,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import myapp.loginForm;
 import net.proteanit.sql.DbUtils;
@@ -59,6 +60,26 @@ public class reportForm extends javax.swing.JInternalFrame {
         
         thead.setFont(new Font("Times New Roman", Font.BOLD, 12));
         
+        TableColumn col1 = reporttable.getColumnModel().getColumn(0);
+        col1.setPreferredWidth(8);
+        TableColumn col2 = reporttable.getColumnModel().getColumn(1);
+        col2.setPreferredWidth(15);
+        TableColumn col3 = reporttable.getColumnModel().getColumn(2);
+        col3.setPreferredWidth(8);
+        TableColumn col4 = reporttable.getColumnModel().getColumn(3);
+        col4.setPreferredWidth(65);
+        TableColumn col5 = reporttable.getColumnModel().getColumn(4);
+        col5.setPreferredWidth(55);
+        TableColumn col6 = reporttable.getColumnModel().getColumn(5);
+        col6.setPreferredWidth(49);
+        TableColumn col7 = reporttable.getColumnModel().getColumn(6);
+        col7.setPreferredWidth(49);
+        TableColumn col8 = reporttable.getColumnModel().getColumn(7);
+        col8.setPreferredWidth(20);
+        TableColumn col9 = reporttable.getColumnModel().getColumn(8);
+        col9.setPreferredWidth(49);
+        TableColumn col10 = reporttable.getColumnModel().getColumn(9);
+        col10.setPreferredWidth(35);
         
     }
     
@@ -132,22 +153,22 @@ public class reportForm extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel3.setText("Current User");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 70, 30));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 70, 30));
 
         cid.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         cid.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cid.setText("ID");
-        jPanel3.add(cid, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, 70, 20));
+        jPanel3.add(cid, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 70, 20));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("REPORTS");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 590, 50));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 650, 50));
 
         jScrollPane1.setViewportView(reporttable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 590, 270));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 650, 270));
 
         individual.setBackground(new java.awt.Color(0, 51, 51));
         individual.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -170,7 +191,7 @@ public class reportForm extends javax.swing.JInternalFrame {
         jLabel4.setText("PRINT");
         individual.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 100, 20));
 
-        jPanel1.add(individual, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 100, 40));
+        jPanel1.add(individual, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, 100, 40));
 
         print.setBackground(new java.awt.Color(0, 51, 51));
         print.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -193,7 +214,7 @@ public class reportForm extends javax.swing.JInternalFrame {
         jLabel2.setText("PRINT TO PDF");
         print.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 100, 20));
 
-        jPanel1.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 100, 40));
+        jPanel1.add(print, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 100, 40));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/g2.jpg"))); // NOI18N
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, 80));
@@ -205,7 +226,7 @@ public class reportForm extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -64,7 +64,6 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
         label = new javax.swing.JLabel();
         idnumber = new javax.swing.JTextField();
         rt = new javax.swing.JComboBox<>();
-        status1 = new javax.swing.JComboBox<>();
         in = new com.toedter.calendar.JDateChooser();
         out = new com.toedter.calendar.JDateChooser();
 
@@ -87,8 +86,8 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMinimumSize(new java.awt.Dimension(610, 420));
-        jPanel1.setPreferredSize(new java.awt.Dimension(610, 420));
+        jPanel1.setMinimumSize(new java.awt.Dimension(659, 420));
+        jPanel1.setPreferredSize(new java.awt.Dimension(659, 420));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register.jpg"))); // NOI18N
@@ -105,7 +104,7 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
         name.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         name.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         name.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 400, 50));
+        jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 400, 50));
 
         ds.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         ds.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -116,13 +115,13 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
                 dsActionPerformed(evt);
             }
         });
-        jPanel1.add(ds, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 190, 50));
+        jPanel1.add(ds, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 190, 50));
 
         pt.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         pt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Card", "Cash" }));
         pt.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Pay Type"));
         pt.setEnabled(false);
-        jPanel1.add(pt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 190, 50));
+        jPanel1.add(pt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 190, 50));
 
         status.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Confirmed", "Pending", "Canceled" }));
@@ -132,7 +131,7 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
                 statusActionPerformed(evt);
             }
         });
-        jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 190, 50));
+        jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 190, 50));
 
         label1.setBackground(new java.awt.Color(0, 51, 51));
         label1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -155,7 +154,7 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
         label.setText("LABEL");
         label1.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 100, 20));
 
-        jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, 100, 40));
+        jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, 100, 40));
 
         idnumber.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         idnumber.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -167,31 +166,21 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
                 idnumberActionPerformed(evt);
             }
         });
-        jPanel1.add(idnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, 90, 40));
+        jPanel1.add(idnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, 90, 40));
 
         rt.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         rt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single Room", "Double Room", "Triple Room" }));
         rt.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Room Type", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         rt.setEnabled(false);
-        jPanel1.add(rt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 190, 50));
-
-        status1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        status1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Confirmed", "Pending", "Canceled" }));
-        status1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Status"));
-        status1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                status1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(status1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 190, 50));
+        jPanel1.add(rt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 190, 50));
 
         in.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Check In", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         in.setDateFormatString("yyyy-MM-dd");
-        jPanel1.add(in, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 190, 60));
+        jPanel1.add(in, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 190, 60));
 
         out.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Check Out", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         out.setDateFormatString("yyyy-MM-dd");
-        jPanel1.add(out, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 190, 60));
+        jPanel1.add(out, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 190, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -252,10 +241,6 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_dsActionPerformed
 
-    private void status1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_status1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_status1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField ds;
@@ -272,6 +257,5 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
     public javax.swing.JComboBox<String> pt;
     public javax.swing.JComboBox<String> rt;
     public javax.swing.JComboBox<String> status;
-    public javax.swing.JComboBox<String> status1;
     // End of variables declaration//GEN-END:variables
 }

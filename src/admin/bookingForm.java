@@ -62,11 +62,27 @@ public class bookingForm extends javax.swing.JInternalFrame {
         thead.setFont(new Font("Times New Roman", Font.BOLD, 12));
         
         
-        
-        
-        
-       
-        
+        TableColumn col1 = bookingtable.getColumnModel().getColumn(0);
+        col1.setPreferredWidth(8);
+        TableColumn col2 = bookingtable.getColumnModel().getColumn(1);
+        col2.setPreferredWidth(15);
+        TableColumn col3 = bookingtable.getColumnModel().getColumn(2);
+        col3.setPreferredWidth(8);
+        TableColumn col4 = bookingtable.getColumnModel().getColumn(3);
+        col4.setPreferredWidth(65);
+        TableColumn col5 = bookingtable.getColumnModel().getColumn(4);
+        col5.setPreferredWidth(55);
+        TableColumn col6 = bookingtable.getColumnModel().getColumn(5);
+        col6.setPreferredWidth(49);
+        TableColumn col7 = bookingtable.getColumnModel().getColumn(6);
+        col7.setPreferredWidth(49);
+        TableColumn col8 = bookingtable.getColumnModel().getColumn(7);
+        col8.setPreferredWidth(20);
+        TableColumn col9 = bookingtable.getColumnModel().getColumn(8);
+        col9.setPreferredWidth(49);
+        TableColumn col10 = bookingtable.getColumnModel().getColumn(9);
+        col10.setPreferredWidth(35);
+
         
     }
     
@@ -167,22 +183,22 @@ public class bookingForm extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel3.setText("Current User");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 70, 30));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 0, 70, 30));
 
         cid.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         cid.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cid.setText("ID");
-        jPanel3.add(cid, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, 70, 20));
+        jPanel3.add(cid, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, 70, 20));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("BOOKINGS FORM");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 590, 50));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 650, 50));
 
         jScrollPane1.setViewportView(bookingtable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 590, 270));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 650, 270));
 
         update.setBackground(new java.awt.Color(0, 51, 51));
         update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -205,7 +221,7 @@ public class bookingForm extends javax.swing.JInternalFrame {
         jLabel7.setText("EDIT");
         update.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 80, 20));
 
-        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 80, 40));
+        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 80, 40));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/g2.jpg"))); // NOI18N
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, 80));
@@ -217,7 +233,7 @@ public class bookingForm extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -173,8 +173,8 @@ public class adminSettings extends javax.swing.JInternalFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMinimumSize(new java.awt.Dimension(610, 420));
-        jPanel1.setPreferredSize(new java.awt.Dimension(610, 420));
+        jPanel1.setMinimumSize(new java.awt.Dimension(659, 420));
+        jPanel1.setPreferredSize(new java.awt.Dimension(659, 420));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -191,7 +191,7 @@ public class adminSettings extends javax.swing.JInternalFrame {
         image.setText("NO IMAGE FOUND");
         jPanel2.add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 180));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 240, 200));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 240, 200));
 
         upload.setText("UPLOAD");
         upload.addActionListener(new java.awt.event.ActionListener() {
@@ -199,7 +199,7 @@ public class adminSettings extends javax.swing.JInternalFrame {
                 uploadActionPerformed(evt);
             }
         });
-        jPanel1.add(upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 90, -1));
+        jPanel1.add(upload, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 90, -1));
 
         remove.setText("REMOVE");
         remove.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +207,7 @@ public class adminSettings extends javax.swing.JInternalFrame {
                 removeActionPerformed(evt);
             }
         });
-        jPanel1.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 90, -1));
+        jPanel1.add(remove, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 90, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("First Name:");
@@ -264,7 +264,7 @@ public class adminSettings extends javax.swing.JInternalFrame {
         label.setText("SAVE");
         label1.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 100, 20));
 
-        jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 100, 40));
+        jPanel1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, 100, 40));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel6.setText("Current User");
