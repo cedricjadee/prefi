@@ -10,6 +10,7 @@ import admin.userForm;
 import config.dbConnector;
 import java.awt.Color;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -200,13 +201,16 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
 
        if(action.equals("Update")){
             
-            
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+                                        String formattedInDate = sdf.format(in.getDate());
+                                        String formattedOutDate = sdf.format(out.getDate());
             
                 dbConnector dbc = new dbConnector();
                 dbc.updateData("UPDATE tbl_booking SET "
                     + " b_name =   '"+name.getText()+"',"
-                    + " b_in =   '"+in.getDate()+"',"
-                    + " b_out = '"+out.getDate()+"',"        
+                    + " b_in =   '"+formattedInDate+"',"
+                    + " b_out = '"+formattedOutDate+"',"        
                     + " b_status = '"+status.getSelectedItem()+"'"
                     + " WHERE b_id = '"+idnumber.getText()+"'");
                 
