@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2024 at 03:01 PM
+-- Generation Time: Jun 20, 2024 at 02:13 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,10 +32,9 @@ CREATE TABLE `tbl_booking` (
   `u_id` int(11) NOT NULL,
   `r_id` int(11) NOT NULL,
   `b_name` varchar(50) NOT NULL,
-  `b_roomtype` varchar(50) NOT NULL,
   `b_in` varchar(50) NOT NULL,
-  `b_out` varchar(50) NOT NULL,
   `b_paytype` varchar(50) NOT NULL,
+  `b_roomtype` varchar(50) NOT NULL,
   `b_statusdate` varchar(50) NOT NULL,
   `b_status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -44,23 +43,12 @@ CREATE TABLE `tbl_booking` (
 -- Dumping data for table `tbl_booking`
 --
 
-INSERT INTO `tbl_booking` (`b_id`, `u_id`, `r_id`, `b_name`, `b_roomtype`, `b_in`, `b_out`, `b_paytype`, `b_statusdate`, `b_status`) VALUES
-(1, 118, 2, 'ced', 'ss', 's', 's', 's', 's', 'Canceled'),
-(10, 126, 4, 'sss', 'Single Room', 'ss', 'sss', 'Card', '2024-05-19', 'Pending'),
-(20, 126, 2, 'ss', 'Single Room', 'ss', 'ss', 'Card', '2024-05-19', 'Pending'),
-(21, 126, 1, 'cedricjadee', 'Triple Room', 'Sun May 19 20:28:03 SGT 2024', 'Sat May 25 20:28:12 SGT 2024', 'Cash', '2024-05-19', 'Pending'),
-(22, 126, 6, 'gwapo', 'Triple Room', 'Thu May 09 22:13:45 SGT 2024', 'Thu May 16 22:13:48 SGT 2024', 'Cash', '2024-05-19', 'Pending'),
-(23, 126, 6, 'mariela agata', 'Single Room', 'Sun May 19 22:45:40 SGT 2024', 'Sun May 26 22:45:43 SGT 2024', 'Card', '2024-05-19', 'Pending'),
-(24, 126, 6, 'mariela agata', 'Single Room', 'Sun May 19 22:46:32 SGT 2024', 'Sun May 26 22:46:34 SGT 2024', 'Card', '2024-05-19', 'Pending'),
-(25, 126, 6, 'mariela agata', 'Single Room', 'Sun May 19 22:50:18 SGT 2024', 'Sun May 26 22:50:20 SGT 2024', 'Card', '2024-05-19', 'Pending'),
-(26, 126, 1, 'asdsad', 'Single Room', 'Thu May 09 22:51:36 SGT 2024', 'Wed May 15 22:51:37 SGT 2024', 'Card', '2024-05-19', 'Pending'),
-(27, 126, 6, 'ellie', 'Single Room', 'Mon May 20 19:43:51 SGT 2024', 'Tue May 21 19:43:54 SGT 2024', 'Card', '2024-05-20', 'Pending'),
-(28, 126, 1, 'ellie', 'Single Room', 'Mon Jul 01 20:00:34 SGT 2024', 'Wed Jul 31 20:00:38 SGT 2024', 'Card', '2024-05-20', 'Pending'),
-(29, 126, 1, 'ellie', 'Single Room', 'Mon Jul 01 20:06:45 SGT 2024', 'Wed Jul 31 20:06:49 SGT 2024', 'Card', '2024-05-20', 'Pending'),
-(30, 126, 2, 'asd', 'Single Room', 'Fri May 17 20:20:29 SGT 2024', 'Thu May 23 20:20:30 SGT 2024', 'Card', '2024-05-20', 'Pending'),
-(31, 126, 3, 'asd', 'Single Room', 'Fri May 17 20:25:49 SGT 2024', 'Thu May 30 20:25:51 SGT 2024', 'Card', '2024-05-20', 'Pending'),
-(32, 126, 4, 'jadey', 'Single Room', 'Thu May 23 00:00:00 SGT 2024', 'Thu May 16 20:27:21 SGT 2024', 'Card', '2024-05-20', 'Pending'),
-(33, 126, 5, 'elle', 'Single Room', 'Fri May 31 20:27:41 SGT 2024', 'Tue Dec 31 20:27:43 SGT 2024', 'Card', '2024-05-20', 'Pending');
+INSERT INTO `tbl_booking` (`b_id`, `u_id`, `r_id`, `b_name`, `b_in`, `b_paytype`, `b_roomtype`, `b_statusdate`, `b_status`) VALUES
+(1, 118, 2, 'ced', 's', 's', '', 's', 'Canceled'),
+(10, 126, 4, 'sss', 'ss', 'Card', '', '2024-05-19', 'Pending'),
+(20, 126, 2, 'ss', 'ss', 'Card', '', '2024-05-19', 'Pending'),
+(34, 126, 7, 'jade', 'Tue May 28 00:00:00 SGT 2024', 'Cash', '', '2024-05-27', 'Confirmed'),
+(35, 126, 7, 'jijid', '2024-06-20', 'Card', 'Single Room', '2024-06-20', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -74,7 +62,6 @@ CREATE TABLE `tbl_room` (
   `r_price` varchar(50) NOT NULL,
   `r_capacity` varchar(50) NOT NULL,
   `r_bedsize` varchar(50) NOT NULL,
-  `r_type` varchar(50) NOT NULL,
   `r_status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -82,13 +69,14 @@ CREATE TABLE `tbl_room` (
 -- Dumping data for table `tbl_room`
 --
 
-INSERT INTO `tbl_room` (`r_id`, `r_floor`, `r_price`, `r_capacity`, `r_bedsize`, `r_type`, `r_status`) VALUES
-(1, '11', '12313', '45', 'queen', 'Triple Room', 'Not Available'),
-(2, '4th', '3000', '4 persons', 'queen size', 'Double Room', 'Not Available'),
-(3, '5th', '213123', '2 persons', 'Double', 'Single Room', 'Not Available'),
-(4, '100th', '21312321', '5 persons', 'King', 'Triple Room', 'Not Available'),
-(5, '2', '200', '2 persons', 'Double', 'Single Room', 'Not Available'),
-(6, '100th', '2000000', '5 persons', 'Double', 'Single Room', 'Not Available');
+INSERT INTO `tbl_room` (`r_id`, `r_floor`, `r_price`, `r_capacity`, `r_bedsize`, `r_status`) VALUES
+(2, '4th', '3000', '4 persons', 'queen size', 'Not Available'),
+(3, '5th', '213123', '2 persons', 'Double', 'Not Available'),
+(4, '100th', '21312321', '5 persons', 'King', 'Not Available'),
+(5, '2', '200', '2 persons', 'Double', 'Not Available'),
+(6, '100th', '2000000', '5 persons', 'Double', 'Not Available'),
+(7, '10th', '10,000', '2 persons', 'Double', 'Available'),
+(8, '1st', '19999', '2 persons', 'Double', 'Available');
 
 -- --------------------------------------------------------
 
@@ -113,7 +101,7 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_username`, `u_password`, `u_type`, `u_status`, `u_image`) VALUES
-(102, 'c', 'c', 'c', 'c', 'ky88G1YlfOhTmsJp16q0JVDaz4gY0HXwvfGZBWKq4+8=', 'Admin', 'Active', ''),
+(102, 'c', 'c', 'k', 'c', 'ky88G1YlfOhTmsJp16q0JVDaz4gY0HXwvfGZBWKq4+8=', 'Admin', 'Pending', ''),
 (103, 'c', 'c', 'c', 'c', 'ky88G1YlfOhTmsJp16q0JVDaz4gY0HXwvfGZBWKq4+8=', 'Admin', 'Active', ''),
 (108, 'c', 'c', 'ccc', 'ccc', 'ky88G1YlfOhTmsJp16q0JVDaz4gY0HXwvfGZBWKq4+8=', 'User', 'Active', ''),
 (109, 'jade', 'getuaban', 'getuaban@test.test', 'test', 'ky88G1YlfOhTmsJp16q0JVDaz4gY0HXwvfGZBWKq4+8=', 'User', 'Pending', ''),
@@ -137,7 +125,7 @@ INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_username`, `
 (131, 'asdaa', 'dasdasd', 'asdasd', 'asdad', 'ucX9rqdO4cMXBbdkOJiVNxuNQWxcrodA5/iQgqn83Ao=', 'Admin', 'Active', 'src/userimages/loginbgd.jpg'),
 (132, 'ced', 'cedd', 'cedd@cedd', 'ceddcedd', '1z79FYTF6JKY46Wp7g5QZ2vmpBqw1eXl3QUbQaJSfRM=', 'User', 'Active', 'src/userimages/loading.jpg'),
 (133, 'carl', 'carl', 'carl', 'carl', 'zIgchiM4OesuVAg3bCnJInUF2CRRKzqRTgzrp1684DQ=', 'Admin', 'Active', 'src/userimages/icons8-loading-50.png'),
-(134, 'm', 'm', 'm', 'm', 'TGeqCG0rLJ3ry46iVx0A+dTwCHNQiCjp+AiQedgK+LI=', 'Admin', 'Active', 'src/userimages/g2.jpg');
+(134, 'm', 'm', 'w', 'm', 'TGeqCG0rLJ3ry46iVx0A+dTwCHNQiCjp+AiQedgK+LI=', 'Admin', 'Active', 'src/userimages/g2.jpg');
 
 --
 -- Indexes for dumped tables
@@ -171,13 +159,13 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_booking`
 --
 ALTER TABLE `tbl_booking`
-  MODIFY `b_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `b_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tbl_room`
 --
 ALTER TABLE `tbl_room`
-  MODIFY `r_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `r_id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
