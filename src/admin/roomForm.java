@@ -68,8 +68,6 @@ public class roomForm extends javax.swing.JInternalFrame {
         col5.setPreferredWidth(40);
         TableColumn col6 = roomtable.getColumnModel().getColumn(5);
         col6.setPreferredWidth(50);
-        TableColumn col7 = roomtable.getColumnModel().getColumn(6);
-        col7.setPreferredWidth(50);
         
         
         
@@ -79,7 +77,7 @@ public class roomForm extends javax.swing.JInternalFrame {
     public void displayData(){
         try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT r_id as 'ROOM ID',r_floor as 'ROOM FLOOR',r_price as 'PRICE',r_capacity as 'CAPACITY',r_bedsize as 'BEDSIZE',r_type as 'ROOM TYPE',r_status as 'STATUS'FROM tbl_room");
+            ResultSet rs = dbc.getData("SELECT r_id as 'ROOM ID',r_floor as 'ROOM FLOOR',r_price as 'PRICE',r_capacity as 'CAPACITY',r_bedsize as 'BEDSIZE',r_status as 'STATUS'FROM tbl_room");
             roomtable.setModel(DbUtils.resultSetToTableModel(rs));
             theader();
             

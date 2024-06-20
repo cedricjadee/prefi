@@ -66,7 +66,6 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
         idnumber = new javax.swing.JTextField();
         rt = new javax.swing.JComboBox<>();
         in = new com.toedter.calendar.JDateChooser();
-        out = new com.toedter.calendar.JDateChooser();
 
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -179,10 +178,6 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
         in.setDateFormatString("yyyy-MM-dd");
         jPanel1.add(in, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 190, 60));
 
-        out.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Check Out", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
-        out.setDateFormatString("yyyy-MM-dd");
-        jPanel1.add(out, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 190, 60));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -204,13 +199,11 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
                                         String formattedInDate = sdf.format(in.getDate());
-                                        String formattedOutDate = sdf.format(out.getDate());
             
                 dbConnector dbc = new dbConnector();
                 dbc.updateData("UPDATE tbl_booking SET "
                     + " b_name =   '"+name.getText()+"',"
                     + " b_in =   '"+formattedInDate+"',"
-                    + " b_out = '"+formattedOutDate+"',"        
                     + " b_status = '"+status.getSelectedItem()+"'"
                     + " WHERE b_id = '"+idnumber.getText()+"'");
                 
@@ -257,7 +250,6 @@ public class adminBookingPage extends javax.swing.JInternalFrame {
     public javax.swing.JLabel label;
     private javax.swing.JPanel label1;
     public javax.swing.JTextField name;
-    public com.toedter.calendar.JDateChooser out;
     public javax.swing.JComboBox<String> pt;
     public javax.swing.JComboBox<String> rt;
     public javax.swing.JComboBox<String> status;

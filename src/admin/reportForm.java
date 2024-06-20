@@ -73,13 +73,11 @@ public class reportForm extends javax.swing.JInternalFrame {
         TableColumn col6 = reporttable.getColumnModel().getColumn(5);
         col6.setPreferredWidth(49);
         TableColumn col7 = reporttable.getColumnModel().getColumn(6);
-        col7.setPreferredWidth(49);
+        col7.setPreferredWidth(20);
         TableColumn col8 = reporttable.getColumnModel().getColumn(7);
-        col8.setPreferredWidth(20);
+        col8.setPreferredWidth(49);
         TableColumn col9 = reporttable.getColumnModel().getColumn(8);
-        col9.setPreferredWidth(49);
-        TableColumn col10 = reporttable.getColumnModel().getColumn(9);
-        col10.setPreferredWidth(35);
+        col9.setPreferredWidth(35);
         
     }
     
@@ -87,7 +85,7 @@ public class reportForm extends javax.swing.JInternalFrame {
         
         try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT tbl_booking.b_id, tbl_user.u_id, tbl_room.r_id, tbl_booking.b_name, tbl_booking.b_roomtype, tbl_booking.b_in, tbl_booking.b_out, tbl_booking.b_paytype, tbl_booking.b_statusdate, tbl_booking.b_status FROM tbl_booking "
+            ResultSet rs = dbc.getData("SELECT tbl_booking.b_id, tbl_user.u_id, tbl_room.r_id, tbl_booking.b_name, tbl_booking.b_roomtype, tbl_booking.b_in, tbl_booking.b_paytype, tbl_booking.b_statusdate, tbl_booking.b_status FROM tbl_booking "
                     + "INNER JOIN tbl_user ON tbl_booking.u_id = tbl_user.u_id "
                     + "INNER JOIN tbl_room ON tbl_booking.r_id = tbl_room.r_id");
             reporttable.setModel(DbUtils.resultSetToTableModel(rs));

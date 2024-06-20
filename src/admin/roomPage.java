@@ -56,7 +56,6 @@ public class roomPage extends javax.swing.JInternalFrame {
         price = new javax.swing.JTextField();
         capacity = new javax.swing.JComboBox<>();
         bs = new javax.swing.JComboBox<>();
-        rt = new javax.swing.JComboBox<>();
         label1 = new javax.swing.JPanel();
         label = new javax.swing.JLabel();
         status = new javax.swing.JComboBox<>();
@@ -97,11 +96,6 @@ public class roomPage extends javax.swing.JInternalFrame {
         bs.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Bed Size", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         jPanel1.add(bs, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 190, 50));
 
-        rt.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        rt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single Room", "Double Room", "Triple Room" }));
-        rt.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Room Type", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
-        jPanel1.add(rt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 190, 50));
-
         label1.setBackground(new java.awt.Color(0, 51, 51));
         label1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         label1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,7 +127,7 @@ public class roomPage extends javax.swing.JInternalFrame {
                 statusActionPerformed(evt);
             }
         });
-        jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 190, 50));
+        jPanel1.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 190, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,13 +161,11 @@ public class roomPage extends javax.swing.JInternalFrame {
                         + "r_price,"
                         + "r_capacity,"
                         + "r_bedsize,"
-                        + "r_type,"
                         + "r_status) VALUES ("
                         + "'"+floor.getText()+"',"
                         + "'"+price.getText()+"',"
                         + "'"+capacity.getSelectedItem()+"',"
                         + "'"+bs.getSelectedItem()+"',"
-                        + "'"+rt.getSelectedItem()+"',"
                         + "'"+status.getSelectedItem()+"')");
 
                     if(true){
@@ -214,7 +206,6 @@ public class roomPage extends javax.swing.JInternalFrame {
     public javax.swing.JLabel label;
     private javax.swing.JPanel label1;
     public javax.swing.JTextField price;
-    public javax.swing.JComboBox<String> rt;
     public javax.swing.JComboBox<String> status;
     // End of variables declaration//GEN-END:variables
 }

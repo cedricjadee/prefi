@@ -40,27 +40,10 @@ public class userBookingPage extends javax.swing.JInternalFrame {
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
-        displayData();
+
     }
     
-    public void displayData(){
-        
-        try {
-                dbConnector dbc = new dbConnector();
-                ResultSet rs = dbc.getData("SELECT r_id as 'ROOM ID', r_floor as 'ROOM FLOOR', r_price as 'PRICE', r_capacity as 'CAPACITY', r_bedsize as 'BEDSIZE', r_type as 'ROOM TYPE', r_status as 'STATUS' FROM tbl_room");
-
-                while (rs.next()) {
-                String id = rs.getString("ROOM ID"); // Use the alias name 'ROOM ID'
-                rid.addItem(id);
-                }
-
-                } catch (SQLException ex) {
-                System.out.println("Errors: " + ex.getMessage());
-                }
-
-                // Display the JComboBox on a JFrame
-               
-            }
+   
 
         
     
@@ -101,7 +84,6 @@ public class userBookingPage extends javax.swing.JInternalFrame {
         name = new javax.swing.JTextField();
         rt = new javax.swing.JComboBox<>();
         in = new com.toedter.calendar.JDateChooser();
-        out = new com.toedter.calendar.JDateChooser();
         rid = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -123,7 +105,7 @@ public class userBookingPage extends javax.swing.JInternalFrame {
         pt.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         pt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Card", "Cash" }));
         pt.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Pay Type"));
-        jPanel1.add(pt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 190, 50));
+        jPanel1.add(pt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 190, 50));
 
         label1.setBackground(new java.awt.Color(0, 51, 51));
         label1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -151,20 +133,16 @@ public class userBookingPage extends javax.swing.JInternalFrame {
         name.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         name.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         name.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3), "Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 1, 14))); // NOI18N
-        jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 400, 50));
+        jPanel1.add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 400, 50));
 
         rt.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         rt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single Room", "Double Room", "Triple Room" }));
         rt.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Room Type", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
-        jPanel1.add(rt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 190, 50));
+        jPanel1.add(rt, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 190, 50));
 
         in.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Check In", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         in.setDateFormatString("yyyy-MM-dd");
-        jPanel1.add(in, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 190, 60));
-
-        out.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Check Out", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
-        out.setDateFormatString("yyyy-MM-dd");
-        jPanel1.add(out, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, 190, 60));
+        jPanel1.add(in, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 190, 60));
 
         rid.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         rid.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "ROOM ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -199,7 +177,7 @@ public class userBookingPage extends javax.swing.JInternalFrame {
                     Session sess = Session.getInstance();
                     dbConnector dbc = new dbConnector();
                      
-                    String query = "SELECT * FROM tbl_room WHERE r_id = '"+rid.getSelectedItem()+"'";
+                    String query = "SELECT * FROM tbl_room WHERE r_id = 'Available'";
                     ResultSet resultSet = dbc.getData(query);
                     if(resultSet.next()){  
                     
@@ -211,7 +189,6 @@ public class userBookingPage extends javax.swing.JInternalFrame {
                                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
                                         String formattedInDate = sdf.format(in.getDate());
-                                        String formattedOutDate = sdf.format(out.getDate());
                                         
                                     boolean result = dbc.insertData("INSERT INTO tbl_booking ("
 
@@ -219,7 +196,6 @@ public class userBookingPage extends javax.swing.JInternalFrame {
                                         + "r_id,"   
                                         + "b_name,"
                                         + "b_in,"
-                                        + "b_out,"
                                         + "b_statusdate,"
                                         + "b_paytype,"
                                         + "b_roomtype,"
@@ -228,7 +204,6 @@ public class userBookingPage extends javax.swing.JInternalFrame {
                                         + "'"+rid.getSelectedItem()+"',"    
                                         + "'"+name.getText()+"',"
                                         + "'"+formattedInDate+"',"
-                                        + "'"+formattedOutDate+"',"
                                         + "'"+currentDate+"',"
                                         + "'"+pt.getSelectedItem()+"',"
                                         + "'"+rt.getSelectedItem()+"',"
@@ -277,7 +252,6 @@ public class userBookingPage extends javax.swing.JInternalFrame {
     public javax.swing.JLabel label;
     private javax.swing.JPanel label1;
     public javax.swing.JTextField name;
-    public com.toedter.calendar.JDateChooser out;
     private javax.swing.JComboBox<String> pt;
     public javax.swing.JComboBox<String> rid;
     public javax.swing.JComboBox<String> rt;

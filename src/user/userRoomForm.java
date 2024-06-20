@@ -10,6 +10,7 @@ import config.Session;
 import user.userBookingPage;
 import config.dbConnector;
 import internalPages.adminPage;
+import internalPages.userPage;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Container;
@@ -43,11 +44,12 @@ public class userRoomForm extends javax.swing.JInternalFrame {
         
         displayData();
     }
+        
     
     public void displayData(){
         try{
             dbConnector dbc = new dbConnector();
-            ResultSet rs = dbc.getData("SELECT r_id,r_floor,r_price,r_capacity,r_bedsize,r_type,r_status FROM tbl_room");
+            ResultSet rs = dbc.getData("SELECT r_id,r_floor,r_price,r_capacity,r_bedsize,r_status FROM tbl_room");
             bookingtable.setModel(DbUtils.resultSetToTableModel(rs));
             
         }catch(SQLException ex){
@@ -99,6 +101,8 @@ public class userRoomForm extends javax.swing.JInternalFrame {
         bookingtable = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        out = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
 
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -151,6 +155,29 @@ public class userRoomForm extends javax.swing.JInternalFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/g1.jpg"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 70, 80));
 
+        out.setBackground(new java.awt.Color(0, 51, 51));
+        out.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        out.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                outMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outMouseExited(evt);
+            }
+        });
+        out.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("CHECKOUT");
+        out.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 80, 20));
+
+        jPanel1.add(out, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, 80, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -181,6 +208,60 @@ public class userRoomForm extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_formInternalFrameActivated
 
+    private void outMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outMouseClicked
+            int rowindex = bookingtable.getSelectedRow();
+        if(rowindex < 0){
+            JOptionPane.showMessageDialog(null,"Please Select an Item!");
+        }else{
+            
+            JDesktopPane desktopPane = null;
+            Container parent = this.getParent();
+            while(parent!=null){
+                if(parent instanceof userPage){
+                    desktopPane = ((userPage)parent).userDesktop;
+                    break;
+                }
+                parent = parent.getParent();
+            }
+            
+            if(desktopPane != null){
+                
+                
+                userCheckout aa = new userCheckout();
+                desktopPane.removeAll();
+                desktopPane.add(aa);
+                try{
+                    dbConnector dbc = new dbConnector();
+                    TableModel model = bookingtable.getModel();
+                    ResultSet rs = dbc.getData("SELECT * FROM tbl_room WHERE r_id = '"+model.getValueAt(rowindex, 0)+"'");
+                    
+                    if(rs.next()){
+                        
+          
+                                aa.rid.setText(""+rs.getInt("r_id"));
+                                aa.status.setSelectedItem(""+rs.getString("r_status"));
+                                
+                                aa.setVisible(true);
+                                aa.action = "Update";
+                                aa.label.setText("UPDATE");
+                                
+                          }
+                }catch(SQLException ex){
+                    System.out.println(""+ex);
+                }
+                }
+ 
+        }
+    }//GEN-LAST:event_outMouseClicked
+
+    private void outMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outMouseEntered
+        out.setBackground(hover);
+    }//GEN-LAST:event_outMouseEntered
+
+    private void outMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outMouseExited
+        out.setBackground(defbutton);
+    }//GEN-LAST:event_outMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTable bookingtable;
@@ -189,8 +270,10 @@ public class userRoomForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel out;
     // End of variables declaration//GEN-END:variables
 }
